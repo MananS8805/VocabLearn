@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">WallLearn</string>
+    <string name="notification_channel_name">WallLearn active</string>
+    <string name="notification_title">WallLearn is watching for wake-ups</string>
+    <string name="notification_text">Your lock screen gets a new GRE word each time you wake your phone</string>
+    <string name="btn_enable">Enable WallLearn</string>
+    <string name="btn_disable">Disable WallLearn</string>
+    <string name="btn_next_word">Show a new word now</string>
+    <string name="btn_battery">Allow WallLearn to run in the background</string>
+    <string name="status_enabled">WallLearn is on — your wallpaper updates every time you wake your phone</string>
+    <string name="status_disabled">WallLearn is off</string>
+    <string name="preview_label">Next up</string>
+    <string name="progress_format">Word %1$d of %2$d</string>
+    <string name="btn_add_word_action">Add a new word</string>
+    <string name="add_word_title">Add a new word</string>
+    <string name="btn_add_word">Add</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="hint_word">Word</string>
+    <string name="hint_pos">Part of speech (e.g. noun, verb)</string>
+    <string name="hint_meaning">Meaning</string>
+    <string name="hint_example">Example sentence (optional)</string>
+    <string name="add_word_missing_fields">Enter at least a word and its meaning</string>
+    <string name="add_word_success">Added — it\'ll join the rotation</string>
+    <string name="add_word_duplicate">That word is already in the list</string>
+</resources>

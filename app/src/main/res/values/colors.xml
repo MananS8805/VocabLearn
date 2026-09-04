@@ -1,0 +1,11 @@
+<resources>
+    <color name="wall_accent">#7C9CFF</color>
+    <color name="wall_word">#FFFFFF</color>
+    <color name="wall_meaning">#D6DCF5</color>
+    <color name="wall_example">#9AA6D6</color>
+    <color name="app_primary">#5B6EF5</color>
+    <color name="app_primary_dark">#3A46B8</color>
+    <color name="app_background">#0F1220</color>
+    <color name="app_surface">#1A1E33</color>
+    <color name="app_on_surface">#F2F3FA</color>
+</resources>
