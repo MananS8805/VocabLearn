@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dusk over a mountain lake: the app's background scenery. Drawn as a vector
+     so it stays sharp on every screen and costs only a few KB. The lower half
+     is deliberately dark and calm so light text on top of it stays readable. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="360dp"
+    android:height="800dp"
+    android:viewportWidth="1080"
+    android:viewportHeight="2400">
+
+    <!-- Sky -->
+    <path android:pathData="M0,0h1080v1160h-1080z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="540"
+                android:startY="0"
+                android:endX="540"
+                android:endY="1160">
+                <item android:offset="0" android:color="#FF0E1330" />
+                <item android:offset="0.38" android:color="#FF29295A" />
+                <item android:offset="0.64" android:color="#FF6A4B7C" />
+                <item android:offset="0.84" android:color="#FFD48A7F" />
+                <item android:offset="1" android:color="#FFF5C190" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Stars -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.75"
+        android:pathData="M132,180m-3,0a3,3 0,1 0,6 0a3,3 0,1 0,-6 0 M842,122m-3.5,0a3.5,3.5 0,1 0,7 0a3.5,3.5 0,1 0,-7 0 M486,312m-2.5,0a2.5,2.5 0,1 0,5 0a2.5,2.5 0,1 0,-5 0 M968,402m-3,0a3,3 0,1 0,6 0a3,3 0,1 0,-6 0 M272,468m-2.5,0a2.5,2.5 0,1 0,5 0a2.5,2.5 0,1 0,-5 0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.4"
+        android:pathData="M60,330m-2,0a2,2 0,1 0,4 0a2,2 0,1 0,-4 0 M352,96m-2,0a2,2 0,1 0,4 0a2,2 0,1 0,-4 0 M640,210m-2,0a2,2 0,1 0,4 0a2,2 0,1 0,-4 0 M720,452m-2,0a2,2 0,1 0,4 0a2,2 0,1 0,-4 0 M1010,236m-2,0a2,2 0,1 0,4 0a2,2 0,1 0,-4 0 M560,560m-2,0a2,2 0,1 0,4 0a2,2 0,1 0,-4 0 M190,620m-2,0a2,2 0,1 0,4 0a2,2 0,1 0,-4 0" />
+
+    <!-- Sun glow -->
+    <path android:pathData="M760,1020m-420,0a420,420 0,1 0,840 0a420,420 0,1 0,-840 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="radial"
+                android:centerX="760"
+                android:centerY="1020"
+                android:gradientRadius="420">
+                <item android:offset="0" android:color="#80FFD3A0" />
+                <item android:offset="0.45" android:color="#26FFC995" />
+                <item android:offset="1" android:color="#00FFC995" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Sun -->
+    <path
+        android:fillColor="#FFFFF0D6"
+        android:pathData="M760,1020m-92,0a92,92 0,1 0,184 0a92,92 0,1 0,-184 0" />
+
+    <!-- Far range -->
+    <path
+        android:fillColor="#9A7092"
+        android:fillAlpha="0.7"
+        android:pathData="M0,870L90,808L170,846L262,742L344,796L424,704L522,786L604,736L702,818L792,766L884,826L966,774L1080,836L1080,1160L0,1160Z" />
+
+    <!-- Middle range -->
+    <path
+        android:fillColor="#FF5A4570"
+        android:pathData="M0,968L118,884L210,934L330,822L432,904L522,862L644,956L762,892L862,962L982,902L1080,944L1080,1160L0,1160Z" />
+
+    <!-- Mist along the valley floor -->
+    <path android:pathData="M0,1000h1080v170h-1080z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="540"
+                android:startY="1000"
+                android:endX="540"
+                android:endY="1170">
+                <item android:offset="0" android:color="#00FFE6D2" />
+                <item android:offset="0.6" android:color="#33FFE6D2" />
+                <item android:offset="1" android:color="#00FFE6D2" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Lake -->
+    <path android:pathData="M0,1150h1080v1250h-1080z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="540"
+                android:startY="1150"
+                android:endX="540"
+                android:endY="2400">
+                <item android:offset="0" android:color="#FF3C365F" />
+                <item android:offset="0.4" android:color="#FF181932" />
+                <item android:offset="1" android:color="#FF07080F" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Sun's reflection on the water -->
+    <path
+        android:strokeColor="#FFFFD9A8"
+        android:strokeAlpha="0.55"
+        android:strokeWidth="7"
+        android:strokeLineCap="round"
+        android:pathData="M672,1196L848,1196" />
+    <path
+        android:strokeColor="#FFFFD9A8"
+        android:strokeAlpha="0.4"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M694,1232L826,1232" />
+    <path
+        android:strokeColor="#FFFFD9A8"
+        android:strokeAlpha="0.28"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:pathData="M712,1272L808,1272" />
+    <path
+        android:strokeColor="#FFFFD9A8"
+        android:strokeAlpha="0.18"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M728,1318L792,1318" />
+    <path
+        android:strokeColor="#FFFFD9A8"
+        android:strokeAlpha="0.1"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M742,1370L778,1370" />
+
+    <!-- Near shore hills -->
+    <path
+        android:fillColor="#FF2A2446"
+        android:pathData="M0,1062C180,1002 320,1042 460,1084C620,1124 760,1034 900,1044C980,1050 1040,1072 1080,1082L1080,1168L0,1168Z" />
+
+    <!-- Pines on the near shore -->
+    <path
+        android:fillColor="#FF19152F"
+        android:pathData="M64,936L100,1010L84,1010L112,1074L16,1074L44,1010L28,1010Z M132,976L160,1034L148,1034L170,1084L94,1084L116,1034L104,1034Z M206,1004L228,1050L218,1050L236,1092L176,1092L194,1050L184,1050Z M1006,1000L1030,1050L1020,1050L1040,1096L972,1096L992,1050L982,1050Z" />
+</vector>

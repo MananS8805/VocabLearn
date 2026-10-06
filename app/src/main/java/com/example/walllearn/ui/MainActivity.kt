@@ -12,7 +12,6 @@ import android.os.PowerManager
 import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.walllearn.R
@@ -22,6 +21,7 @@ import com.example.walllearn.core.WordRepository
 import com.example.walllearn.databinding.ActivityMainBinding
 import com.example.walllearn.databinding.DialogAddWordBinding
 import com.example.walllearn.service.WallpaperUpdateService
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,8 +44,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setUpEdgeToEdge(binding.content)
 
-        binding.toggleButton.setOnClickListener { onToggleClicked() }
+        binding.serviceSwitch.setOnCheckedChangeListener { _, _ -> onToggleClicked() }
+        binding.searchPill.setOnClickListener {
+            startActivity(android.content.Intent(this, DictionaryActivity::class.java))
+        }
         binding.nextWordButton.setOnClickListener { onShowNewWordClicked() }
         binding.batteryButton.setOnClickListener { requestBatteryOptimizationExemption() }
         binding.addWordButton.setOnClickListener { showAddWordDialog() }
@@ -96,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showAddWordDialog() {
         val dialogBinding = DialogAddWordBinding.inflate(layoutInflater)
-        AlertDialog.Builder(this)
+        MaterialAlertDialogBuilder(this)
             .setTitle(R.string.add_word_title)
             .setView(dialogBinding.root)
             .setPositiveButton(R.string.btn_add_word) { _, _ ->
@@ -135,16 +139,19 @@ class MainActivity : AppCompatActivity() {
         binding.statusText.text = getString(
             if (enabled) R.string.status_enabled else R.string.status_disabled
         )
-        binding.toggleButton.text = getString(
-            if (enabled) R.string.btn_disable else R.string.btn_enable
-        )
+        // Detach the listener so syncing the switch to saved state doesn't toggle the service.
+        binding.serviceSwitch.setOnCheckedChangeListener(null)
+        binding.serviceSwitch.isChecked = enabled
+        binding.serviceSwitch.setOnCheckedChangeListener { _, _ -> onToggleClicked() }
 
         val word = WordRepository.currentWord(this)
         if (word != null) {
             binding.wordText.text = word.word.replaceFirstChar { it.uppercase() }
             binding.posText.text = word.pos
+            binding.posText.visibility = if (word.pos.isBlank()) android.view.View.GONE else android.view.View.VISIBLE
             binding.meaningText.text = word.meaning
-            binding.exampleText.text = word.example
+            binding.exampleText.text = getString(R.string.sense_example_format, word.example)
+            binding.exampleText.visibility = if (word.example.isBlank()) android.view.View.GONE else android.view.View.VISIBLE
             val (position, total) = WordRepository.progress(this)
             binding.progressText.text = getString(R.string.progress_format, position, total)
         }

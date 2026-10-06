@@ -4,7 +4,7 @@
     <selectionStates>
       <SelectionState runConfigName="Walllearn">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2026-09-04T15:45:01.981081200Z">
+        <DropdownSelection timestamp="2026-10-06T08:49:26.162001300Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="PhysicalDevice" identifier="serial=RZCY303RDAW" />
