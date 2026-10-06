@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Only used when you tap "Look up online" for a word that isn't in the offline dictionary -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- Needed to change the lock screen / home screen wallpaper -->
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <!-- Restart the wallpaper service after the device reboots -->
@@ -11,7 +13,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <!-- Required to show the foreground service's notification on Android 13+ -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <!-- Optional: ask the user to exempt WallLearn from battery optimization so the
+    <!-- Optional: ask the user to exempt Glossa from battery optimization so the
          service isn't killed and misses screen-on events -->
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
@@ -23,24 +25,28 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WallLearn"
+        android:theme="@style/Theme.Glossa"
         tools:targetApi="34">
 
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.WallLearn">
+            android:theme="@style/Theme.Glossa">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+
+
+        <!-- configChanges: keep the reader (and its speech session) alive across rotation -->
         <activity
-            android:name=".ui.DictionaryActivity"
+            android:name=".ui.EssayReaderActivity"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:exported="false"
-            android:parentActivityName=".ui.MainActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:parentActivityName=".ui.MainActivity" />
+
 
         <service
             android:name=".service.WallpaperUpdateService"

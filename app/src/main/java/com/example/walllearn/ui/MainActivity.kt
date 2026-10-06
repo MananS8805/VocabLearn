@@ -1,174 +1,123 @@
 package com.example.walllearn.ui
 
-import android.Manifest
-import android.app.Activity
-import android.content.pm.PackageManager
-import android.net.Uri
-import android.os.Build
+import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.PowerManager
-import android.provider.Settings
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.SystemBarStyle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
+import androidx.core.view.updatePadding
+import androidx.fragment.app.Fragment
 import com.example.walllearn.R
 import com.example.walllearn.core.AppPrefs
-import com.example.walllearn.core.WallpaperController
-import com.example.walllearn.core.WordRepository
 import com.example.walllearn.databinding.ActivityMainBinding
-import com.example.walllearn.databinding.DialogAddWordBinding
-import com.example.walllearn.service.WallpaperUpdateService
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
+/**
+ * Hosts the four tabs (Today, Words, Essays, Themes) behind a bottom bar. Every tab is
+ * created once and shown/hidden, so each keeps its state (search text, scroll position)
+ * while you move between them.
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val mainHandler = Handler(Looper.getMainLooper())
+    private var selectedTab = R.id.tab_today
+    private var lightLook = false
 
-    private val notificationPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-            if (granted) {
-                enableWallLearn()
-            } else {
-                // Continue anyway: the service still works, it just can't
-                // show its "running" notification on Android 13+ without it,
-                // which makes Android more likely to eventually kill it.
-                enableWallLearn()
-            }
+    private val backToToday = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            binding.bottomNav.selectedItemId = R.id.tab_today
         }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // The theme must be set before the window's views are inflated.
+        val look = AppPrefs.appTheme(this)
+        when (look) {
+            AppPrefs.APP_THEME_LIGHT -> setTheme(R.style.Theme_Glossa_Light)
+            AppPrefs.APP_THEME_BAUHAUS -> setTheme(R.style.Theme_Glossa_Bauhaus)
+        }
+        lightLook = look == AppPrefs.APP_THEME_LIGHT
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setUpEdgeToEdge(binding.content)
+        binding.bauhausShapes.isVisible = look == AppPrefs.APP_THEME_BAUHAUS
+        setUpInsets()
+        onBackPressedDispatcher.addCallback(this, backToToday)
 
-        binding.serviceSwitch.setOnCheckedChangeListener { _, _ -> onToggleClicked() }
-        binding.searchPill.setOnClickListener {
-            startActivity(android.content.Intent(this, DictionaryActivity::class.java))
-        }
-        binding.nextWordButton.setOnClickListener { onShowNewWordClicked() }
-        binding.batteryButton.setOnClickListener { requestBatteryOptimizationExemption() }
-        binding.addWordButton.setOnClickListener { showAddWordDialog() }
-
-        refreshUi()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        refreshUi()
-    }
-
-    private fun onToggleClicked() {
-        if (AppPrefs.isServiceEnabled(this)) {
-            disableWallLearn()
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction().apply {
+                for (tab in TABS) add(R.id.fragmentContainer, tab.create(), tab.tag)
+            }.commitNow()
         } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
-                ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
-                != PackageManager.PERMISSION_GRANTED
-            ) {
-                notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-            } else {
-                enableWallLearn()
+            selectedTab = savedInstanceState.getInt(KEY_TAB, R.id.tab_today)
+        }
+
+        binding.bottomNav.setOnItemSelectedListener { item ->
+            showTab(item.itemId, animate = true)
+            true
+        }
+        binding.bottomNav.selectedItemId = selectedTab
+        showTab(selectedTab, animate = false)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(KEY_TAB, selectedTab)
+    }
+
+    private fun showTab(id: Int, animate: Boolean) {
+        val fm = supportFragmentManager
+        val target = TABS.firstOrNull { it.id == id } ?: return
+        selectedTab = id
+        backToToday.isEnabled = id != R.id.tab_today
+        fm.beginTransaction().apply {
+            if (animate && Motion.enabled(this@MainActivity)) setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+            for (tab in TABS) {
+                val f: Fragment = fm.findFragmentByTag(tab.tag) ?: continue
+                if (tab.id == target.id) show(f) else hide(f)
             }
-        }
+        }.commit()
     }
 
-    private fun enableWallLearn() {
-        AppPrefs.setServiceEnabled(this, true)
-        WallpaperUpdateService.start(this)
-        // Show a fresh word immediately rather than waiting for the next wake-up.
-        runInBackground { WallpaperController.applyNextWallpaper(applicationContext) }
-        refreshUi()
-    }
-
-    private fun disableWallLearn() {
-        AppPrefs.setServiceEnabled(this, false)
-        WallpaperUpdateService.stop(this)
-        refreshUi()
-    }
-
-    private fun onShowNewWordClicked() {
-        runInBackground {
-            WallpaperController.applyNextWallpaper(applicationContext)
-            mainHandler.post { refreshUi() }
-        }
-    }
-
-    private fun showAddWordDialog() {
-        val dialogBinding = DialogAddWordBinding.inflate(layoutInflater)
-        MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.add_word_title)
-            .setView(dialogBinding.root)
-            .setPositiveButton(R.string.btn_add_word) { _, _ ->
-                val word = dialogBinding.wordInput.text?.toString().orEmpty().trim()
-                val pos = dialogBinding.posInput.text?.toString().orEmpty().trim()
-                val meaning = dialogBinding.meaningInput.text?.toString().orEmpty().trim()
-                val example = dialogBinding.exampleInput.text?.toString().orEmpty().trim()
-
-                if (word.isEmpty() || meaning.isEmpty()) {
-                    Toast.makeText(this, R.string.add_word_missing_fields, Toast.LENGTH_SHORT).show()
-                    return@setPositiveButton
-                }
-
-                val added = WordRepository.addWord(this, word, pos, meaning, example)
-                Toast.makeText(
-                    this,
-                    if (added) R.string.add_word_success else R.string.add_word_duplicate,
-                    Toast.LENGTH_SHORT
-                ).show()
-                refreshUi()
-            }
-            .setNegativeButton(R.string.btn_cancel, null)
-            .show()
-    }
-
-    private fun requestBatteryOptimizationExemption() {
-        val intent = android.content.Intent(
-            Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-            Uri.parse("package:$packageName")
-        )
-        startActivity(intent)
-    }
-
-    private fun refreshUi() {
-        val enabled = AppPrefs.isServiceEnabled(this)
-        binding.statusText.text = getString(
-            if (enabled) R.string.status_enabled else R.string.status_disabled
-        )
-        // Detach the listener so syncing the switch to saved state doesn't toggle the service.
-        binding.serviceSwitch.setOnCheckedChangeListener(null)
-        binding.serviceSwitch.isChecked = enabled
-        binding.serviceSwitch.setOnCheckedChangeListener { _, _ -> onToggleClicked() }
-
-        val word = WordRepository.currentWord(this)
-        if (word != null) {
-            binding.wordText.text = word.word.replaceFirstChar { it.uppercase() }
-            binding.posText.text = word.pos
-            binding.posText.visibility = if (word.pos.isBlank()) android.view.View.GONE else android.view.View.VISIBLE
-            binding.meaningText.text = word.meaning
-            binding.exampleText.text = getString(R.string.sense_example_format, word.example)
-            binding.exampleText.visibility = if (word.example.isBlank()) android.view.View.GONE else android.view.View.VISIBLE
-            val (position, total) = WordRepository.progress(this)
-            binding.progressText.text = getString(R.string.progress_format, position, total)
-        }
-
-        binding.batteryButton.visibility = if (!isIgnoringBatteryOptimizations()) {
-            android.view.View.VISIBLE
+    /**
+     * Draws behind the system bars. The tab content is kept clear of the status bar, the bottom
+     * bar clear of the gesture/nav bar, and while the keyboard is up the bar is hidden so the
+     * content (a search field, say) can use the room.
+     */
+    private fun setUpInsets() {
+        // Light look needs dark status/navigation icons; the others need light ones.
+        val barStyle = if (lightLook) {
+            SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT)
         } else {
-            android.view.View.GONE
+            SystemBarStyle.dark(Color.TRANSPARENT)
+        }
+        enableEdgeToEdge(statusBarStyle = barStyle, navigationBarStyle = barStyle)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
+            val bars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            val ime = insets.getInsets(WindowInsetsCompat.Type.ime())
+            val keyboardUp = ime.bottom > bars.bottom
+            binding.fragmentContainer.updatePadding(top = bars.top, left = bars.left, right = bars.right)
+            binding.navBar.isVisible = !keyboardUp
+            binding.navBar.updatePadding(left = bars.left, right = bars.right, bottom = bars.bottom)
+            binding.content.updatePadding(bottom = if (keyboardUp) ime.bottom else 0)
+            WindowInsetsCompat.CONSUMED
         }
     }
 
-    private fun isIgnoringBatteryOptimizations(): Boolean {
-        val powerManager = getSystemService(Activity.POWER_SERVICE) as? PowerManager ?: return true
-        return powerManager.isIgnoringBatteryOptimizations(packageName)
-    }
+    private class Tab(val id: Int, val tag: String, val create: () -> Fragment)
 
-    private fun runInBackground(block: () -> Unit) {
-        Thread(block).start()
+    private companion object {
+        const val KEY_TAB = "selected_tab"
+        val TABS = listOf(
+            Tab(R.id.tab_today, "today") { TodayFragment() },
+            Tab(R.id.tab_words, "words") { WordsFragment() },
+            Tab(R.id.tab_essays, "essays") { EssaysFragment() },
+            Tab(R.id.tab_themes, "themes") { ThemesFragment() }
+        )
     }
 }

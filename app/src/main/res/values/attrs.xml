@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Look-and-feel tokens that differ between the Dusk and Bauhaus app themes. -->
+    <attr name="glossaAccent" format="color" />
+    <attr name="glossaTextPrimary" format="color" />
+    <attr name="glossaTextSecondary" format="color" />
+    <attr name="glossaTextMuted" format="color" />
+    <attr name="glossaDivider" format="color" />
+    <attr name="glossaNavBg" format="color" />
+    <attr name="glossaCard" format="reference" />
+    <attr name="glossaPill" format="reference" />
+    <attr name="glossaNavIndicator" format="color" />
+    <attr name="glossaButtonTint" format="color" />
+    <attr name="glossaHeadingFont" format="string|reference" />
+</resources>

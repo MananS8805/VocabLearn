@@ -14,7 +14,7 @@
         android:layout_marginBottom="10dp"
         android:letterSpacing="0.16"
         android:textAllCaps="true"
-        android:textColor="@color/app_accent"
+        android:textColor="?attr/glossaAccent"
         android:textSize="11sp"
         tools:text="adjective" />
 
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lineSpacingMultiplier="1.15"
-        android:textColor="@color/text_secondary"
+        android:textColor="?attr/glossaTextSecondary"
         android:textSize="16sp"
         tools:text="1.  lasting a very short time" />
 
@@ -34,7 +34,7 @@
         android:layout_marginTop="4dp"
         android:lineSpacingMultiplier="1.15"
         android:paddingStart="22dp"
-        android:textColor="@color/text_muted"
+        android:textColor="?attr/glossaTextMuted"
         android:textSize="14sp"
         android:textStyle="italic"
         tools:ignore="RtlSymmetry"

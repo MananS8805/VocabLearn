@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bauhaus card: a flat dark block with a hard cream edge and square corners. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/bauhaus_card" />
+    <stroke
+        android:width="2dp"
+        android:color="@color/bauhaus_edge" />
+    <corners android:radius="0dp" />
+</shape>

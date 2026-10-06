@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">WallLearn</string>
-    <string name="notification_channel_name">WallLearn active</string>
-    <string name="notification_title">WallLearn is watching for wake-ups</string>
+    <string name="app_name">Glossa</string>
+    <string name="notification_channel_name">Glossa active</string>
+    <string name="notification_title">Glossa is watching for wake-ups</string>
     <string name="notification_text">Your lock screen gets a new GRE word each time you wake your phone</string>
     <string name="btn_next_word">Next word</string>
-    <string name="btn_battery">Allow WallLearn to run in the background</string>
+    <string name="btn_battery">Allow Glossa to run in the background</string>
     <string name="status_enabled">A new word every time you wake your phone</string>
     <string name="status_disabled">Off — turn on to start learning</string>
     <string name="preview_label">On your lock screen</string>
@@ -36,4 +36,74 @@
     <string name="cd_back">Back</string>
     <string name="cd_clear">Clear search</string>
     <string name="dictionary_credit">Definitions from WordNet 3.0, © Princeton University</string>
+
+    <!-- GRE essays -->
+    <string name="essays_pill">GRE essays · read &amp; listen</string>
+    <string name="essays_title">GRE essays</string>
+    <string name="essays_subtitle">Model essays with notes, read aloud with a moving highlight.</string>
+    <string name="essay_meta_format">%1$s · %2$d words</string>
+    <string name="essay_meta_user_format">%1$d words</string>
+    <string name="btn_add_essay">Add your own essay</string>
+    <string name="add_essay_title">Add an essay</string>
+    <string name="hint_essay_title">Title (optional)</string>
+    <string name="hint_essay_prompt">Issue prompt (optional)</string>
+    <string name="hint_essay_body">Paste your essay. Blank lines separate paragraphs.</string>
+    <string name="add_essay_empty">Paste some essay text first</string>
+    <string name="delete_essay_title">Delete this essay?</string>
+    <string name="btn_delete">Delete</string>
+    <string name="mode_read">Read</string>
+    <string name="mode_listen">Listen</string>
+    <string name="cd_play">Play</string>
+    <string name="cd_pause">Pause</string>
+    <string name="cd_previous_sentence">Previous sentence</string>
+    <string name="cd_next_sentence">Next sentence</string>
+    <string name="cd_insights">Notes on this essay</string>
+    <string name="pitch_format">Pitch %1$s</string>
+    <string name="speed_format">%1$s×</string>
+    <string name="btn_voice">Voice</string>
+    <string name="voice_title">Choose a voice</string>
+    <string name="voice_none">No voices are available. Check Settings › Text-to-speech output.</string>
+    <string name="tts_unavailable">No English text-to-speech voice is available on this device. Install one in Settings › Text-to-speech output, then reopen the essay.</string>
+    <string name="tts_not_ready">Voice is still starting up — try again in a moment</string>
+    <string name="tts_error">The text-to-speech engine stopped. Try again.</string>
+    <string name="sentence_progress_format">Sentence %1$d of %2$d</string>
+    <string name="essay_prompt_label">The issue</string>
+    <string name="insights_points">Strongest points</string>
+    <string name="insights_vocab">Vocabulary</string>
+    <string name="insights_structure">Why it works</string>
+    <string name="insights_none">No notes for this essay.</string>
+    <string name="btn_add_vocab">Add to lock screen</string>
+    <string name="vocab_added">Added — it\'ll join the rotation</string>
+    <string name="vocab_in_rotation">In rotation</string>
+    <string name="kind_thesis">Thesis</string>
+    <string name="kind_argument">Argument</string>
+    <string name="kind_complexity">Complexity</string>
+    <string name="kind_conclusion">Conclusion</string>
+
+    <!-- Themes -->
+    <string name="themes_pill">Lock screen themes</string>
+    <string name="themes_title">Lock screen themes</string>
+    <string name="themes_subtitle">Tap a theme to use it. Previews show your current word.</string>
+    <string name="theme_applied">%1$s is now your lock screen theme</string>
+    <string name="theme_saved">%1$s saved — turn on lock screen words to see it</string>
+    <string name="cd_selected_theme">Selected</string>
+
+    <!-- Web lookup -->
+    <string name="web_lookup_button">Look up “%1$s” online</string>
+    <string name="web_lookup_loading">Looking up “%1$s”…</string>
+    <string name="web_lookup_not_found">Wiktionary has no entry for “%1$s”. Check the spelling.</string>
+    <string name="web_lookup_unavailable">Couldn\'t reach the web. Check your connection and try again.</string>
+    <string name="web_credit">Definition from Wiktionary (CC BY-SA 4.0), saved to your device</string>
+
+    <!-- Tabs -->
+    <string name="tab_today">Today</string>
+    <string name="tab_words">Words</string>
+    <string name="tab_essays">Essays</string>
+    <string name="tab_themes">Themes</string>
+
+    <string name="themes_app_look">App look</string>
+    <string name="themes_lock_title">Lock screen</string>
+    <string name="app_theme_dark">Dark</string>
+    <string name="app_theme_light">Light</string>
+    <string name="app_theme_bauhaus">Bauhaus</string>
 </resources>

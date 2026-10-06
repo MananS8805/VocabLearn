@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/bauhaus_button_tint">
+    <item>
+        <shape>
+            <solid android:color="@color/bauhaus_card" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/bauhaus_edge" />
+            <corners android:radius="0dp" />
+        </shape>
+    </item>
+</ripple>

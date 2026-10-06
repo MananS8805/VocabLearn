@@ -18,3 +18,6 @@ local.properties
 # Release signing - never commit the keystore or its credentials.
 /keystore.properties
 /keystore/
+
+# Shareable APKs copied out of the build
+/dist/

@@ -5,18 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:importantForAccessibility="no"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg_scenery" />
 
-    <!-- Heavier scrim than the home screen, since this page is mostly text. -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#99000000" />
 
     <LinearLayout
         android:id="@+id/content"
@@ -30,19 +19,18 @@
             android:layout_height="56dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/bg_pill"
+            android:background="?attr/glossaPill"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingHorizontal="4dp">
 
-            <ImageButton
-                android:id="@+id/backButton"
+            <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/cd_back"
-                android:src="@drawable/ic_arrow_back"
-                app:tint="@color/text_secondary" />
+                android:importantForAccessibility="no"
+                android:padding="14dp"
+                android:src="@drawable/ic_search"
+                app:tint="?attr/glossaTextSecondary" />
 
             <EditText
                 android:id="@+id/searchInput"
@@ -55,8 +43,8 @@
                 android:importantForAutofill="no"
                 android:inputType="textNoSuggestions"
                 android:maxLines="1"
-                android:textColor="@color/text_primary"
-                android:textColorHint="@color/text_muted"
+                android:textColor="?attr/glossaTextPrimary"
+                android:textColorHint="?attr/glossaTextMuted"
                 android:textSize="17sp" />
 
             <ImageButton
@@ -67,8 +55,24 @@
                 android:contentDescription="@string/cd_clear"
                 android:src="@drawable/ic_close"
                 android:visibility="invisible"
-                app:tint="@color/text_secondary" />
+                app:tint="?attr/glossaTextSecondary" />
         </LinearLayout>
+
+        <!-- Opt-in web fallback: shown when the typed word isn't in the offline dictionary -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/webLookupButton"
+            style="@style/Widget.Material3.Button.TonalButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:textColor="?attr/glossaTextPrimary"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:backgroundTint="?attr/glossaButtonTint"
+            app:icon="@drawable/ic_search"
+            app:iconSize="18dp"
+            app:iconTint="?attr/glossaAccent" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -84,7 +88,7 @@
                 android:lineSpacingMultiplier="1.3"
                 android:paddingHorizontal="40dp"
                 android:text="@string/dictionary_intro"
-                android:textColor="@color/text_muted"
+                android:textColor="?attr/glossaTextMuted"
                 android:textSize="14sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -112,7 +116,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_glass"
+                        android:background="?attr/glossaCard"
                         android:orientation="vertical"
                         android:padding="24dp">
 
@@ -120,8 +124,8 @@
                             android:id="@+id/detailWord"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="serif"
-                            android:textColor="@color/text_primary"
+                            android:fontFamily="?attr/glossaHeadingFont"
+                            android:textColor="?attr/glossaTextPrimary"
                             android:textSize="36sp"
                             tools:text="Ephemeral" />
 
@@ -131,11 +135,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:textColor="@color/text_primary"
+                            android:textColor="?attr/glossaTextPrimary"
                             android:textSize="13sp"
-                            app:backgroundTint="@color/glass_stroke"
+                            app:backgroundTint="?attr/glossaButtonTint"
                             app:iconSize="16dp"
-                            app:iconTint="@color/app_accent"
+                            app:iconTint="?attr/glossaAccent"
                             tools:icon="@drawable/ic_check"
                             tools:text="@string/dictionary_added" />
 
@@ -149,12 +153,13 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/creditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:gravity="center"
                         android:text="@string/dictionary_credit"
-                        android:textColor="@color/text_muted"
+                        android:textColor="?attr/glossaTextMuted"
                         android:textSize="11sp" />
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>

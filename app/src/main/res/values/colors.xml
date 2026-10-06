@@ -6,13 +6,57 @@
     <color name="wall_example">#9AA6D6</color>
 
     <!-- App: minimal light-on-glass palette over the dusk scenery -->
-    <color name="app_background">#0E1020</color>
     <color name="app_accent">#FFD3A0</color>
     <color name="app_on_accent">#2A1C10</color>
     <color name="text_primary">#FFFFFF</color>
     <color name="text_secondary">#D9E1E4F2</color>
     <color name="text_muted">#99E1E4F2</color>
-    <color name="glass_fill">#590B0D1E</color>
-    <color name="glass_stroke">#2EFFFFFF</color>
     <color name="divider">#1FFFFFFF</color>
+
+    <!-- Essay reader: true black, white text -->
+    <color name="reader_bg">#000000</color>
+    <color name="reader_text">#FFFFFF</color>
+    <color name="reader_word_bg">#66FFD3A0</color>
+
+    <!-- App look: Dark (black based) -->
+    <color name="dark_bg">#000000</color>
+    <color name="dark_card">#141414</color>
+    <color name="dark_card_stroke">#2A2A2A</color>
+    <color name="dark_accent">#FFD3A0</color>
+    <color name="dark_on_accent">#2A1C10</color>
+    <color name="dark_text">#FFFFFF</color>
+    <color name="dark_text_secondary">#C8FFFFFF</color>
+    <color name="dark_text_muted">#80FFFFFF</color>
+    <color name="dark_divider">#24FFFFFF</color>
+    <color name="dark_nav">#0A0A0A</color>
+    <color name="dark_nav_indicator">#33FFD3A0</color>
+    <color name="dark_button_tint">#26FFFFFF</color>
+
+    <!-- App look: Light (white based) -->
+    <color name="light_bg">#FAFAF7</color>
+    <color name="light_card">#FFFFFF</color>
+    <color name="light_card_stroke">#E2DFD5</color>
+    <color name="light_accent">#A8442A</color>
+    <color name="light_on_accent">#FFFFFF</color>
+    <color name="light_text">#111111</color>
+    <color name="light_text_secondary">#B3111111</color>
+    <color name="light_text_muted">#73111111</color>
+    <color name="light_divider">#1F000000</color>
+    <color name="light_nav">#FFFFFF</color>
+    <color name="light_nav_indicator">#26A8442A</color>
+    <color name="light_button_tint">#14000000</color>
+
+    <!-- App look: Bauhaus -->
+    <color name="bauhaus_bg">#0E0E0E</color>
+    <color name="bauhaus_card">#1A1A1A</color>
+    <color name="bauhaus_edge">#F1E9D8</color>
+    <color name="bauhaus_accent">#F2B705</color>
+    <color name="bauhaus_on_accent">#111111</color>
+    <color name="bauhaus_text">#F1E9D8</color>
+    <color name="bauhaus_text_secondary">#E6F1E9D8</color>
+    <color name="bauhaus_text_muted">#99F1E9D8</color>
+    <color name="bauhaus_divider">#33F1E9D8</color>
+    <color name="bauhaus_nav">#1A1A1A</color>
+    <color name="bauhaus_nav_indicator">#33F2B705</color>
+    <color name="bauhaus_button_tint">#26F1E9D8</color>
 </resources>

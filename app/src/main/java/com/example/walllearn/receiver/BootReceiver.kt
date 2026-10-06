@@ -8,7 +8,7 @@ import com.example.walllearn.service.WallpaperUpdateService
 
 /**
  * Restarts the wallpaper-updating service after a reboot, but only if
- * the user had WallLearn turned on before the device restarted.
+ * the user had Glossa turned on before the device restarted.
  */
 class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {

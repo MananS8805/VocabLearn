@@ -1,15 +1,82 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- The app always sits on the dusk scenery, so it uses one dark theme
-         regardless of the system setting. -->
-    <style name="Theme.WallLearn" parent="Theme.Material3.Dark.NoActionBar">
-        <item name="colorPrimary">@color/app_accent</item>
-        <item name="colorOnPrimary">@color/app_on_accent</item>
-        <item name="colorSecondary">@color/app_accent</item>
-        <item name="colorControlNormal">@color/text_secondary</item>
-        <item name="colorOnSurface">@color/text_primary</item>
-        <item name="android:textColorPrimary">@color/text_primary</item>
-        <item name="android:textColorSecondary">@color/text_secondary</item>
-        <item name="android:textColorHint">@color/text_muted</item>
-        <item name="android:windowBackground">@color/app_background</item>
+    <!-- Three app looks, chosen in the Themes tab: Dark (default), Light, Bauhaus.
+         Every colour here is a @color resource on purpose: Material resolves some theme
+         attributes by resource id, and an inline hex value has none (it crashes at inflate). -->
+    <style name="Theme.Glossa" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/dark_accent</item>
+        <item name="colorOnPrimary">@color/dark_on_accent</item>
+        <item name="colorSecondary">@color/dark_accent</item>
+        <item name="colorControlNormal">@color/dark_text_secondary</item>
+        <item name="colorOnSurface">@color/dark_text</item>
+        <item name="android:textColorPrimary">@color/dark_text</item>
+        <item name="android:textColorSecondary">@color/dark_text_secondary</item>
+        <item name="android:textColorHint">@color/dark_text_muted</item>
+        <item name="android:windowBackground">@color/dark_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="glossaAccent">@color/dark_accent</item>
+        <item name="glossaTextPrimary">@color/dark_text</item>
+        <item name="glossaTextSecondary">@color/dark_text_secondary</item>
+        <item name="glossaTextMuted">@color/dark_text_muted</item>
+        <item name="glossaDivider">@color/dark_divider</item>
+        <item name="glossaNavBg">@color/dark_nav</item>
+        <item name="glossaNavIndicator">@color/dark_nav_indicator</item>
+        <item name="glossaButtonTint">@color/dark_button_tint</item>
+        <item name="glossaCard">@drawable/bg_card_dark</item>
+        <item name="glossaPill">@drawable/bg_pill_dark</item>
+        <item name="glossaHeadingFont">serif</item>
+    </style>
+
+    <style name="Theme.Glossa.Light" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/light_accent</item>
+        <item name="colorOnPrimary">@color/light_on_accent</item>
+        <item name="colorSecondary">@color/light_accent</item>
+        <item name="colorControlNormal">@color/light_text_secondary</item>
+        <item name="colorOnSurface">@color/light_text</item>
+        <item name="android:textColorPrimary">@color/light_text</item>
+        <item name="android:textColorSecondary">@color/light_text_secondary</item>
+        <item name="android:textColorHint">@color/light_text_muted</item>
+        <item name="android:windowBackground">@color/light_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="glossaAccent">@color/light_accent</item>
+        <item name="glossaTextPrimary">@color/light_text</item>
+        <item name="glossaTextSecondary">@color/light_text_secondary</item>
+        <item name="glossaTextMuted">@color/light_text_muted</item>
+        <item name="glossaDivider">@color/light_divider</item>
+        <item name="glossaNavBg">@color/light_nav</item>
+        <item name="glossaNavIndicator">@color/light_nav_indicator</item>
+        <item name="glossaButtonTint">@color/light_button_tint</item>
+        <item name="glossaCard">@drawable/bg_card_light</item>
+        <item name="glossaPill">@drawable/bg_pill_light</item>
+        <item name="glossaHeadingFont">serif</item>
+    </style>
+
+    <!-- Bauhaus: black ground, cream text, yellow accent, flat square blocks, heavy sans headings. -->
+    <style name="Theme.Glossa.Bauhaus" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/bauhaus_accent</item>
+        <item name="colorOnPrimary">@color/bauhaus_on_accent</item>
+        <item name="colorSecondary">@color/bauhaus_accent</item>
+        <item name="colorControlNormal">@color/bauhaus_text_secondary</item>
+        <item name="colorOnSurface">@color/bauhaus_text</item>
+        <item name="android:textColorPrimary">@color/bauhaus_text</item>
+        <item name="android:textColorSecondary">@color/bauhaus_text_secondary</item>
+        <item name="android:textColorHint">@color/bauhaus_text_muted</item>
+        <item name="android:windowBackground">@color/bauhaus_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="glossaAccent">@color/bauhaus_accent</item>
+        <item name="glossaTextPrimary">@color/bauhaus_text</item>
+        <item name="glossaTextSecondary">@color/bauhaus_text_secondary</item>
+        <item name="glossaTextMuted">@color/bauhaus_text_muted</item>
+        <item name="glossaDivider">@color/bauhaus_divider</item>
+        <item name="glossaNavBg">@color/bauhaus_nav</item>
+        <item name="glossaNavIndicator">@color/bauhaus_nav_indicator</item>
+        <item name="glossaButtonTint">@color/bauhaus_button_tint</item>
+        <item name="glossaCard">@drawable/bg_card_flat</item>
+        <item name="glossaPill">@drawable/bg_pill_flat</item>
+        <item name="glossaHeadingFont">sans-serif-black</item>
+    </style>
+
+    <!-- Soft pill behind the selected bottom-bar tab. -->
+    <style name="Widget.Glossa.NavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">?attr/glossaNavIndicator</item>
     </style>
 </resources>

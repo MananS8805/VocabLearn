@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
-    android:fontFamily="serif"
+    android:fontFamily="?attr/glossaHeadingFont"
     android:gravity="center_vertical"
     android:minHeight="52dp"
     android:paddingHorizontal="32dp"
-    android:textColor="@color/text_primary"
+    android:textColor="?attr/glossaTextPrimary"
     android:textSize="19sp"
     tools:text="ephemeral" />
