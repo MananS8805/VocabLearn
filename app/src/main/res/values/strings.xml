@@ -145,6 +145,18 @@
     <string name="cd_speak">Hear it</string>
     <string name="tts_spanish_unavailable">No Spanish voice is installed. Add one in Settings › Text-to-speech output.</string>
 
+    <!-- Spanish voice -->
+    <string name="voice_label">Spanish voice</string>
+    <string name="accent_auto">Best</string>
+    <string name="accent_us">Latin Am.</string>
+    <string name="accent_mx">Mexico</string>
+    <string name="accent_es">Spain</string>
+    <string name="voice_pitch">Pitch</string>
+    <string name="voice_speed">Speed</string>
+    <string name="voice_test">Test voice</string>
+    <string name="voice_sample">Buenos días, ¿cómo estás hoy?</string>
+    <string name="voice_hint">Lower pitch sounds fuller. Voices come from your phone’s text-to-speech engine, so the accents on offer depend on what is installed.</string>
+
     <!-- Import -->
     <string name="import_title">Import text</string>
     <string name="import_hint_title">Title (optional)</string>

@@ -135,6 +135,36 @@ object AppPrefs {
         prefs(context).edit().putString(KEY_ACTIVE_TEXT, id).apply()
     }
 
+    // --- Spanish voice ("Hear it" on Spanish cards) ------------------------------------
+
+    /** Which Spanish accent to prefer: [ACCENT_AUTO] (best voice installed), US/Latin America, Mexico or Spain. */
+    fun spanishAccent(context: Context): String = prefs(context).getString(KEY_ES_ACCENT, ACCENT_AUTO) ?: ACCENT_AUTO
+
+    fun setSpanishAccent(context: Context, accent: String) {
+        prefs(context).edit().putString(KEY_ES_ACCENT, accent).apply()
+    }
+
+    /** Lower than 1 is deeper; the default sits low because device voices run high and thin. */
+    fun spanishPitch(context: Context): Float = prefs(context).getFloat(KEY_ES_PITCH, 0.8f)
+
+    fun setSpanishPitch(context: Context, pitch: Float) {
+        prefs(context).edit().putFloat(KEY_ES_PITCH, pitch).apply()
+    }
+
+    fun spanishRate(context: Context): Float = prefs(context).getFloat(KEY_ES_RATE, 0.85f)
+
+    fun setSpanishRate(context: Context, rate: Float) {
+        prefs(context).edit().putFloat(KEY_ES_RATE, rate).apply()
+    }
+
+    const val ACCENT_AUTO = "auto"
+    const val ACCENT_US = "us"
+    const val ACCENT_MX = "mx"
+    const val ACCENT_ES = "es"
+    private const val KEY_ES_ACCENT = "es_voice_accent"
+    private const val KEY_ES_PITCH = "es_voice_pitch"
+    private const val KEY_ES_RATE = "es_voice_rate"
+
     const val SOURCE_EN = "en"
     const val SOURCE_ES = "es"
     const val SOURCE_TX = "tx"

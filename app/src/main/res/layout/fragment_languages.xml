@@ -277,6 +277,157 @@
                     android:textSize="12sp" />
             </LinearLayout>
 
+            <!-- Spanish voice -->
+            <TextView
+                style="@style/Widget.Glossa.SectionLabel"
+                android:text="@string/voice_label" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/glossaCard"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/accentToggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/accentAuto"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:maxLines="1"
+                        android:paddingHorizontal="2dp"
+                        android:textSize="13sp"
+                        android:text="@string/accent_auto" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/accentUs"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:maxLines="1"
+                        android:paddingHorizontal="2dp"
+                        android:textSize="13sp"
+                        android:text="@string/accent_us" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/accentMx"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:maxLines="1"
+                        android:paddingHorizontal="2dp"
+                        android:textSize="13sp"
+                        android:text="@string/accent_mx" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/accentEs"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:maxLines="1"
+                        android:paddingHorizontal="2dp"
+                        android:textSize="13sp"
+                        android:text="@string/accent_es" />
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/voice_pitch"
+                        android:textColor="?attr/glossaTextPrimary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/pitchValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/glossaAccent"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/sliderPitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/voice_pitch"
+                    android:stepSize="0.1"
+                    android:valueFrom="0.5"
+                    android:valueTo="1.2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/voice_speed"
+                        android:textColor="?attr/glossaTextPrimary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/speedValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/glossaAccent"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/sliderSpeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/voice_speed"
+                    android:stepSize="0.05"
+                    android:valueFrom="0.5"
+                    android:valueTo="1.2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/testVoiceButton"
+                    style="@style/Widget.Material3.Button.TonalButton.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/voice_test"
+                    app:icon="@drawable/ic_volume" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/voice_hint"
+                    android:textColor="?attr/glossaTextMuted"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
             <!-- My texts -->
             <TextView
                 style="@style/Widget.Glossa.SectionLabel"

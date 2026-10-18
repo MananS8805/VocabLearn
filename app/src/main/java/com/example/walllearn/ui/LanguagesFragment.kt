@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.walllearn.R
 import com.example.walllearn.core.AppPrefs
+import com.example.walllearn.core.PhraseSpeaker
 import com.example.walllearn.core.SpanishRepository
 import com.example.walllearn.core.UserTextRepository
 import com.example.walllearn.databinding.FragmentLanguagesBinding
@@ -27,6 +29,7 @@ class LanguagesFragment : Fragment() {
 
     /** True while the controls are being set from saved state, so listeners don't write back. */
     private var syncing = false
+    private var speaker: PhraseSpeaker? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentLanguagesBinding.inflate(inflater, container, false)
@@ -60,6 +63,23 @@ class LanguagesFragment : Fragment() {
             SpanishRepository.setLevel(ctx, levelOf(checkedId))
             updateSpanish()
         }
+        binding.accentToggle.addOnButtonCheckedListener { _, checkedId, isChecked ->
+            if (!isChecked || syncing) return@addOnButtonCheckedListener
+            AppPrefs.setSpanishAccent(ctx, accentOf(checkedId))
+        }
+        binding.sliderPitch.addOnChangeListener { _: Slider, value: Float, fromUser: Boolean ->
+            if (fromUser && !syncing) {
+                AppPrefs.setSpanishPitch(ctx, value)
+                updateVoiceLabels()
+            }
+        }
+        binding.sliderSpeed.addOnChangeListener { _: Slider, value: Float, fromUser: Boolean ->
+            if (fromUser && !syncing) {
+                AppPrefs.setSpanishRate(ctx, value)
+                updateVoiceLabels()
+            }
+        }
+        binding.testVoiceButton.setOnClickListener { testVoice() }
         binding.importTextButton.setOnClickListener {
             startActivity(Intent(ctx, ImportTextActivity::class.java))
         }
@@ -77,6 +97,8 @@ class LanguagesFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        speaker?.shutdown()
+        speaker = null
         _binding = null
         super.onDestroyView()
     }
@@ -89,7 +111,11 @@ class LanguagesFragment : Fragment() {
         binding.sliderTexts.value = AppPrefs.mixWeight(ctx, AppPrefs.SOURCE_TX).toFloat()
         binding.spanishModeToggle.check(if (SpanishRepository.isAuto(ctx)) R.id.modeAuto else R.id.modeManual)
         binding.levelToggle.check(levelId(SpanishRepository.level(ctx)))
+        binding.accentToggle.check(accentId(AppPrefs.spanishAccent(ctx)))
+        binding.sliderPitch.value = AppPrefs.spanishPitch(ctx).coerceIn(0.5f, 1.2f)
+        binding.sliderSpeed.value = AppPrefs.spanishRate(ctx).coerceIn(0.5f, 1.2f)
         syncing = false
+        updateVoiceLabels()
         updateShares()
         updateSpanish()
         renderTexts()
@@ -169,6 +195,33 @@ class LanguagesFragment : Fragment() {
             }
             binding.textsContainer.addView(row.root)
         }
+    }
+
+    private fun updateVoiceLabels() {
+        binding.pitchValue.text = String.format(java.util.Locale.US, "%.1f×", binding.sliderPitch.value)
+        binding.speedValue.text = String.format(java.util.Locale.US, "%.2f×", binding.sliderSpeed.value)
+    }
+
+    /** Speaks a short Spanish sample with the current accent, pitch and speed. */
+    private fun testVoice() {
+        val engine = speaker ?: PhraseSpeaker(requireContext()) {
+            if (_binding != null) Toast.makeText(requireContext(), R.string.tts_spanish_unavailable, Toast.LENGTH_LONG).show()
+        }.also { speaker = it }
+        engine.speak(getString(R.string.voice_sample), "es-ES")
+    }
+
+    private fun accentId(accent: String) = when (accent) {
+        AppPrefs.ACCENT_US -> R.id.accentUs
+        AppPrefs.ACCENT_MX -> R.id.accentMx
+        AppPrefs.ACCENT_ES -> R.id.accentEs
+        else -> R.id.accentAuto
+    }
+
+    private fun accentOf(id: Int) = when (id) {
+        R.id.accentUs -> AppPrefs.ACCENT_US
+        R.id.accentMx -> AppPrefs.ACCENT_MX
+        R.id.accentEs -> AppPrefs.ACCENT_ES
+        else -> AppPrefs.ACCENT_AUTO
     }
 
     private fun levelId(level: Int) = LEVEL_IDS[(level - 1).coerceIn(0, LEVEL_IDS.lastIndex)]
