@@ -139,6 +139,19 @@
                         tools:text="Word 42 of 1094" />
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/speakButton"
+                        style="@style/Widget.Material3.Button.IconButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:contentDescription="@string/cd_speak"
+                        android:visibility="gone"
+                        app:icon="@drawable/ic_volume"
+                        app:iconGravity="textStart"
+                        app:iconPadding="0dp"
+                        app:iconSize="20dp"
+                        app:iconTint="?attr/glossaAccent" />
+
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/nextWordButton"
                         style="@style/Widget.Material3.Button.TextButton.Icon"
                         android:layout_width="wrap_content"

@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.2 — Languages
+
+Updating keeps everything: words, essays, settings and your place in the rotation. All new
+settings default to "English only" until you move a slider.
+
+**New**
+- Languages tab with one slider per source (English words, Spanish, My texts). The lock screen
+  follows the ratio exactly, evenly spread rather than random.
+- Spanish course in four levels (Beginner words, Elementary phrases, Intermediate sentences and
+  verbs, Advanced tough words, false friends and proverbs). Auto-advance moves up a level after one
+  pass; or choose your own level. You can start at any level.
+- Import text: paste or share any Spanish text, split it into cards by line or sentence, review and
+  edit, translate offline with ML Kit (one 30 MB model download, then no network), and save it to the
+  rotation. In-order or shuffled.
+- Tap any word in an imported text to translate it, hear it, or save it to your lock screen words.
+- Hear it button for Spanish cards (Android text-to-speech).
+- Phrase and sentence cards resize to fit the lock screen.
+
 ## 1.1 — Glossa
 
 **Renamed** from WallLearn to Glossa, with a new launcher icon (three bars, the middle one

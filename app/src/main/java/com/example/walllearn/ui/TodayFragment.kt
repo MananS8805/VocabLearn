@@ -21,6 +21,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.walllearn.R
 import com.example.walllearn.core.AppPrefs
+import com.example.walllearn.core.PhraseSpeaker
+import com.example.walllearn.core.Rotation
 import com.example.walllearn.core.WallpaperController
 import com.example.walllearn.core.WordRepository
 import com.example.walllearn.databinding.DialogAddWordBinding
@@ -35,6 +37,7 @@ class TodayFragment : Fragment() {
     private val binding get() = _binding!!
     private val mainHandler = Handler(Looper.getMainLooper())
     private var typer: ValueAnimator? = null
+    private var speaker: PhraseSpeaker? = null
 
     private val notificationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { _ ->
@@ -65,6 +68,8 @@ class TodayFragment : Fragment() {
         typer?.cancel()
         typer = null
         mainHandler.removeCallbacksAndMessages(null)
+        speaker?.shutdown()
+        speaker = null
         _binding = null
         super.onDestroyView()
     }
@@ -136,6 +141,13 @@ class TodayFragment : Fragment() {
             .show()
     }
 
+    private fun speak(text: String, languageTag: String) {
+        val engine = speaker ?: PhraseSpeaker(requireContext()) {
+            if (_binding != null) Toast.makeText(requireContext(), R.string.tts_spanish_unavailable, Toast.LENGTH_LONG).show()
+        }.also { speaker = it }
+        engine.speak(text, languageTag)
+    }
+
     private fun requestBatteryOptimizationExemption() {
         val ctx = requireContext()
         startActivity(
@@ -154,16 +166,24 @@ class TodayFragment : Fragment() {
         binding.serviceSwitch.isChecked = enabled
         binding.serviceSwitch.setOnCheckedChangeListener { _, _ -> onToggleClicked() }
 
-        val word = WordRepository.currentWord(ctx)
+        val word = Rotation.current(ctx)
         if (word != null) {
             showWord(word.word.replaceFirstChar { it.uppercase() }, animateWord)
             binding.posText.text = word.pos
             binding.posText.visibility = if (word.pos.isBlank()) View.GONE else View.VISIBLE
             binding.meaningText.text = word.meaning
-            binding.exampleText.text = getString(R.string.sense_example_format, word.example)
+            // Spanish and imported cards carry a plain teaching note; only English examples are quoted.
+            binding.exampleText.text =
+                if (word.speakLang != null) word.example else getString(R.string.sense_example_format, word.example)
             binding.exampleText.visibility = if (word.example.isBlank()) View.GONE else View.VISIBLE
             val (position, total) = WordRepository.progress(ctx)
-            binding.progressText.text = getString(R.string.progress_format, position, total)
+            binding.progressText.text = word.footer ?: getString(R.string.progress_format, position, total)
+
+            val tag = word.speakLang
+            binding.speakButton.visibility = if (tag != null) View.VISIBLE else View.GONE
+            binding.speakButton.setOnClickListener {
+                if (tag != null) speak(word.word, tag)
+            }
         }
 
         binding.batteryButton.visibility = if (!isIgnoringBatteryOptimizations()) View.VISIBLE else View.GONE

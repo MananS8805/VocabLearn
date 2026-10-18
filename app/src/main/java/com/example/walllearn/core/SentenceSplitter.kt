@@ -18,7 +18,7 @@ object SentenceSplitter {
         "etc", "cf", "inc", "approx", "fig", "prof", "sr", "jr"
     )
     private const val CLOSERS = "\"'”’)]"
-    private const val OPENERS = "\"'“‘(["
+    private const val OPENERS = "\"'“‘([¿¡«"
 
     fun splitParagraphs(paragraphs: List<String>): List<Sentence> =
         paragraphs.flatMapIndexed { i, p -> split(p, i) }

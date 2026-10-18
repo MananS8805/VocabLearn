@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.walllearn.R
 import com.example.walllearn.core.AppPrefs
 import com.example.walllearn.core.WallpaperController
+import com.example.walllearn.core.Rotation
 import com.example.walllearn.core.WallpaperGenerator
 import com.example.walllearn.core.WordRepository
 import com.example.walllearn.databinding.FragmentThemesBinding
@@ -90,7 +91,7 @@ class ThemesFragment : Fragment() {
     private fun renderPreviews() {
         val appContext = requireContext().applicationContext
         executor.execute {
-            val word = WordRepository.currentWord(appContext) ?: SAMPLE_WORD
+            val word = Rotation.current(appContext) ?: SAMPLE_WORD
             val progress = WordRepository.progress(appContext)
             for (theme in LockThemes.all) {
                 val bmp = WallpaperGenerator.generate(appContext, word, progress, theme, PREVIEW_W, PREVIEW_H)

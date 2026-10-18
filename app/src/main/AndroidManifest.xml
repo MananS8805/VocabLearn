@@ -40,6 +40,24 @@
 
 
 
+        <!-- Paste or share Spanish text to split it into lock screen cards -->
+        <activity
+            android:name=".ui.ImportTextActivity"
+            android:exported="true"
+            android:parentActivityName=".ui.MainActivity"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.TextViewerActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity" />
+
         <!-- configChanges: keep the reader (and its speech session) alive across rotation -->
         <activity
             android:name=".ui.EssayReaderActivity"

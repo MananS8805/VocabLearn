@@ -16,7 +16,7 @@ import com.example.walllearn.core.AppPrefs
 import com.example.walllearn.databinding.ActivityMainBinding
 
 /**
- * Hosts the four tabs (Today, Words, Essays, Themes) behind a bottom bar. Every tab is
+ * Hosts the five tabs (Today, Words, Languages, Essays, Themes) behind a bottom bar. Every tab is
  * created once and shown/hidden, so each keeps its state (search text, scroll position)
  * while you move between them.
  */
@@ -116,6 +116,7 @@ class MainActivity : AppCompatActivity() {
         val TABS = listOf(
             Tab(R.id.tab_today, "today") { TodayFragment() },
             Tab(R.id.tab_words, "words") { WordsFragment() },
+            Tab(R.id.tab_languages, "languages") { LanguagesFragment() },
             Tab(R.id.tab_essays, "essays") { EssaysFragment() },
             Tab(R.id.tab_themes, "themes") { ThemesFragment() }
         )

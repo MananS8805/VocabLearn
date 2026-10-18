@@ -90,21 +90,35 @@ object WallpaperGenerator {
             cursorY += p.textSize * 1.4f
         }
 
-        // The word.
+        // Shrinks [paint] until [text] fits in [maxHeight], so long sentences never run off the card.
+        fun fit(text: CharSequence, paint: TextPaint, startSize: Float, minSize: Float, maxHeight: Float, spacing: Float = 0f): StaticLayout {
+            paint.textSize = startSize
+            var l = layout(text, paint, spacing)
+            while (l.height > maxHeight && paint.textSize > minSize) {
+                paint.textSize *= 0.94f
+                l = layout(text, paint, spacing)
+            }
+            return l
+        }
+        val sentence = word.sentence
+
+        // The word (or, for phrases and sentences, the text sized to fit).
         val shown = when {
+            sentence -> word.word
             theme.terminal -> "$ define ${word.word.lowercase()}"
             theme.uppercaseWord -> word.word.uppercase()
             else -> word.word
         }
         val baseSize = when {
+            sentence -> width * 0.072f
             theme.terminal -> width * 0.062f
             theme.uppercaseWord -> width * 0.095f
             else -> width * 0.115f
         }
         val wordPaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
             color = theme.word
-            typeface = typeface(theme.headFace, bold = !theme.terminal)
-            letterSpacing = if (theme.uppercaseWord) 0.04f else 0f
+            typeface = typeface(theme.headFace, bold = !theme.terminal && !sentence)
+            letterSpacing = if (theme.uppercaseWord && !sentence) 0.04f else 0f
             textSize = baseSize
         }
         // Shrink until the longest word fits on one line instead of breaking mid-word.
@@ -112,7 +126,11 @@ object WallpaperGenerator {
         while (wordPaint.measureText(longest) > contentWidth && wordPaint.textSize > baseSize * 0.4f) {
             wordPaint.textSize *= 0.94f
         }
-        val wordLayout = layout(shown, wordPaint)
+        val wordLayout = if (sentence) {
+            fit(shown, wordPaint, wordPaint.textSize, width * 0.04f, height * 0.25f, width * 0.01f)
+        } else {
+            layout(shown, wordPaint)
+        }
         draw(wordLayout, cursorY)
         cursorY += wordLayout.height + wordPaint.textSize * 0.18f
 
@@ -136,9 +154,15 @@ object WallpaperGenerator {
             textSize = width * 0.048f
             typeface = typeface(theme.bodyFace, bold = false, italic = theme.italicMeaning)
         }
-        val meaningLayout = layout(word.meaning, meaningPaint, width * 0.012f)
-        draw(meaningLayout, cursorY)
-        cursorY += meaningLayout.height + wordPaint.textSize * 0.55f
+        if (word.meaning.isNotBlank()) {
+            val meaningLayout = if (sentence) {
+                fit(word.meaning, meaningPaint, width * 0.05f, width * 0.034f, height * 0.15f, width * 0.012f)
+            } else {
+                layout(word.meaning, meaningPaint, width * 0.012f)
+            }
+            draw(meaningLayout, cursorY)
+            cursorY += meaningLayout.height + wordPaint.textSize * 0.55f
+        }
 
         // Example sentence (skipped when the word was added without one).
         if (word.example.isNotBlank()) {
@@ -147,7 +171,13 @@ object WallpaperGenerator {
                 textSize = width * 0.038f
                 typeface = typeface(theme.bodyFace, bold = false, italic = true)
             }
-            draw(layout("“${word.example}”", p, width * 0.01f), cursorY)
+            // Spanish notes are plain teaching hints; only English examples are quoted.
+            val example = if (sentence) word.example else "“${word.example}”"
+            if (sentence) {
+                draw(fit(example, p, width * 0.038f, width * 0.028f, height * 0.09f, width * 0.01f), cursorY)
+            } else {
+                draw(layout(example, p, width * 0.01f), cursorY)
+            }
         }
 
         // Progress counter and watermark near the bottom.
@@ -158,7 +188,7 @@ object WallpaperGenerator {
             typeface = Typeface.DEFAULT
         }
         canvas.drawText(
-            context.getString(R.string.progress_format, progress.first, progress.second),
+            word.footer ?: context.getString(R.string.progress_format, progress.first, progress.second),
             marginX, height * 0.94f, footer
         )
         val brand = TextPaint(footer).apply {

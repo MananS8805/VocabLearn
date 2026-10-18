@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="32dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="?attr/glossaHeadingFont"
+                android:text="@string/languages_title"
+                android:textColor="?attr/glossaTextPrimary"
+                android:textSize="26sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/languages_subtitle"
+                android:textColor="?attr/glossaTextSecondary"
+                android:textSize="14sp" />
+
+            <!-- Mix -->
+            <TextView
+                style="@style/Widget.Glossa.SectionLabel"
+                android:text="@string/mix_label" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/glossaCard"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/mix_english"
+                        android:textColor="?attr/glossaTextPrimary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/shareEnglish"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/glossaAccent"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/sliderEnglish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/mix_english"
+                    android:stepSize="1"
+                    android:valueFrom="0"
+                    android:valueTo="10" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/mix_spanish"
+                        android:textColor="?attr/glossaTextPrimary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/shareSpanish"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/glossaAccent"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/sliderSpanish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/mix_spanish"
+                    android:stepSize="1"
+                    android:valueFrom="0"
+                    android:valueTo="10" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/mix_texts"
+                        android:textColor="?attr/glossaTextPrimary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/shareTexts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/glossaAccent"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/sliderTexts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/mix_texts"
+                    android:stepSize="1"
+                    android:valueFrom="0"
+                    android:valueTo="10" />
+
+                <TextView
+                    android:id="@+id/mixHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="?attr/glossaTextMuted"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Spanish -->
+            <TextView
+                style="@style/Widget.Glossa.SectionLabel"
+                android:text="@string/spanish_label" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/glossaCard"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/spanishModeToggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/modeAuto"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/spanish_mode_auto" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/modeManual"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/spanish_mode_manual" />
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+                <TextView
+                    android:id="@+id/spanishModeHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="?attr/glossaTextSecondary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/levelPickerLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textColor="?attr/glossaTextPrimary"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/levelToggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/level1"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:text="1" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/level2"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:text="2" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/level3"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:text="3" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/level4"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:insetLeft="0dp"
+                        android:insetRight="0dp"
+                        android:text="4" />
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+
+                <TextView
+                    android:id="@+id/levelName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="?attr/glossaAccent"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/levelDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="?attr/glossaTextSecondary"
+                    android:textSize="13sp" />
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/levelProgressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:max="100" />
+
+                <TextView
+                    android:id="@+id/levelProgressText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="?attr/glossaTextMuted"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- My texts -->
+            <TextView
+                style="@style/Widget.Glossa.SectionLabel"
+                android:text="@string/texts_label" />
+
+            <LinearLayout
+                android:id="@+id/textsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/textsEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/texts_empty"
+                android:textColor="?attr/glossaTextSecondary"
+                android:textSize="14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/importTextButton"
+                style="@style/Widget.Material3.Button.TonalButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/btn_import_text"
+                app:icon="@drawable/ic_add" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

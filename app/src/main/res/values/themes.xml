@@ -79,4 +79,16 @@
     <style name="Widget.Glossa.NavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">?attr/glossaNavIndicator</item>
     </style>
+
+    <!-- Small accent heading above a group of settings. -->
+    <style name="Widget.Glossa.SectionLabel" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:letterSpacing">0.14</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">?attr/glossaAccent</item>
+        <item name="android:textSize">11sp</item>
+    </style>
 </resources>

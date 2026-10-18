@@ -106,4 +106,79 @@
     <string name="app_theme_dark">Dark</string>
     <string name="app_theme_light">Light</string>
     <string name="app_theme_bauhaus">Bauhaus</string>
+
+    <!-- Languages -->
+    <string name="tab_languages">Languages</string>
+    <string name="languages_title">Languages</string>
+    <string name="languages_subtitle">Choose what your lock screen teaches, and how often.</string>
+    <string name="mix_label">Lock screen mix</string>
+    <string name="mix_english">English words</string>
+    <string name="mix_spanish">Spanish</string>
+    <string name="mix_texts">My texts</string>
+    <string name="mix_off">Off</string>
+    <string name="mix_share_format">%1$d%%</string>
+    <string name="mix_hint_default">Slide to set how often each appears. Off means never.</string>
+    <string name="mix_hint_no_texts">Import a text below to start showing your own lines.</string>
+    <string name="mix_hint_nothing">Everything is off. English words will show.</string>
+    <string name="spanish_label">Spanish course</string>
+    <string name="spanish_mode_auto">Auto-advance</string>
+    <string name="spanish_mode_manual">I choose</string>
+    <string name="spanish_hint_auto">Moves up a level on its own once you have seen every card in the current one.</string>
+    <string name="spanish_hint_manual">Stays on the level you pick until you change it.</string>
+    <string name="spanish_pick_auto">Start at level</string>
+    <string name="spanish_pick_manual">Level</string>
+    <string name="level_format">Level %1$d · %2$s</string>
+    <string name="level_progress_format">%1$d of %2$d cards seen in this pass</string>
+    <string name="level_desc_1">Everyday words, always with the article so the gender sticks.</string>
+    <string name="level_desc_2">Short survival phrases for greetings, food, travel and help.</string>
+    <string name="level_desc_3">Full sentences with past and future, plus the key verbs.</string>
+    <string name="level_desc_4">Tougher words, false friends and traditional proverbs.</string>
+    <string name="texts_label">My texts</string>
+    <string name="texts_empty">Paste a poem, a story or any Spanish text. Glossa splits it into lines and teaches it on your lock screen.</string>
+    <string name="btn_import_text">Import text</string>
+    <string name="cd_text_enabled">Show this text on the lock screen</string>
+    <string name="text_meta_format">%1$d lines · %2$s</string>
+    <string name="text_meta_ordered">in order</string>
+    <string name="text_meta_shuffled">shuffled</string>
+    <string name="delete_text_title">Delete this text?</string>
+    <string name="delete_text_message">Its lines will leave your lock screen rotation.</string>
+    <string name="cd_speak">Hear it</string>
+    <string name="tts_spanish_unavailable">No Spanish voice is installed. Add one in Settings › Text-to-speech output.</string>
+
+    <!-- Import -->
+    <string name="import_title">Import text</string>
+    <string name="import_hint_title">Title (optional)</string>
+    <string name="import_hint_body">Paste Spanish text here. One phrase per line or normal paragraphs both work.</string>
+    <string name="import_split">Split into cards</string>
+    <string name="import_mode_auto">Auto</string>
+    <string name="import_mode_lines">By line</string>
+    <string name="import_mode_sentences">By sentence</string>
+    <string name="import_empty">Paste some text first</string>
+    <string name="import_review_title">Review the cards</string>
+    <string name="import_review_hint">Edit, merge or delete anything that looks off before saving.</string>
+    <string name="import_translate_all">Translate</string>
+    <string name="import_translating">Translating… %1$d of %2$d</string>
+    <string name="import_downloading">Downloading the offline Spanish model (about 30 MB, once)…</string>
+    <string name="import_model_failed">Couldn’t download the translation model. Connect to the internet once, then try again. You can also type translations yourself.</string>
+    <string name="import_translate_failed">Some lines couldn’t be translated. You can type them in.</string>
+    <string name="import_save">Save</string>
+    <string name="import_saved">Saved — it’s in your rotation once My texts is above zero</string>
+    <string name="import_none">Nothing to save</string>
+    <string name="import_full">You’ve reached the limit of saved texts. Delete one first.</string>
+    <string name="import_ordered">Show in order</string>
+    <string name="import_cards_format">%1$d cards</string>
+    <string name="hint_spanish_line">Spanish</string>
+    <string name="hint_translation_line">English</string>
+    <string name="cd_merge_down">Merge with the next card</string>
+    <string name="cd_delete_card">Delete card</string>
+
+    <!-- Text viewer -->
+    <string name="viewer_tap_hint">Tap a word to translate it, hear it, or save it.</string>
+    <string name="word_sheet_translating">Translating…</string>
+    <string name="word_sheet_unavailable">No translation available. Download the Spanish model first by importing or translating a text.</string>
+    <string name="word_save">Save word</string>
+    <string name="word_saved">Saved to your words</string>
+    <string name="word_already_saved">Already in your saved words</string>
+    <string name="viewer_in_order">Show in order</string>
+    <string name="viewer_missing">That text no longer exists</string>
 </resources>

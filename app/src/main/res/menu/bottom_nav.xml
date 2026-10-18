@@ -9,6 +9,10 @@
         android:icon="@drawable/ic_search"
         android:title="@string/tab_words" />
     <item
+        android:id="@+id/tab_languages"
+        android:icon="@drawable/ic_language"
+        android:title="@string/tab_languages" />
+    <item
         android:id="@+id/tab_essays"
         android:icon="@drawable/ic_headphones"
         android:title="@string/tab_essays" />

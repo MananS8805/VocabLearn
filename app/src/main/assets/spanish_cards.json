@@ -1,0 +1,1045 @@
+[
+{
+"l": 1,
+"k": "word",
+"es": "la casa",
+"en": "the house",
+"n": "Feminine: la casa"
+},
+{
+"l": 1,
+"k": "word",
+"es": "el agua",
+"en": "the water",
+"n": "Feminine, but takes el before the stressed a"
+},
+{
+"l": 1,
+"k": "word",
+"es": "el pan",
+"en": "the bread",
+"n": "Masculine"
+},
+{
+"l": 1,
+"k": "word",
+"es": "la mesa",
+"en": "the table",
+"n": "Feminine"
+},
+{
+"l": 1,
+"k": "word",
+"es": "el libro",
+"en": "the book",
+"n": "Masculine"
+},
+{
+"l": 1,
+"k": "word",
+"es": "la ciudad",
+"en": "the city",
+"n": "Nouns ending in -dad are feminine"
+},
+{
+"l": 1,
+"k": "word",
+"es": "el amigo",
+"en": "the friend (male)",
+"n": "La amiga for a female friend"
+},
+{
+"l": 1,
+"k": "word",
+"es": "la familia",
+"en": "the family",
+"n": "Feminine"
+},
+{
+"l": 1,
+"k": "word",
+"es": "el perro",
+"en": "the dog",
+"n": "Masculine; rr is rolled"
+},
+{
+"l": 1,
+"k": "word",
+"es": "el gato",
+"en": "the cat",
+"n": "Masculine"
+},
+{
+"l": 1,
+"k": "word",
+"es": "la leche",
+"en": "the milk",
+"n": "Feminine; ch as in chair"
+},
+{
+"l": 1,
+"k": "word",
+"es": "el café",
+"en": "the coffee",
+"n": "The accent marks the stress"
+},
+{
+"l": 1,
+"k": "word",
+"es": "la calle",
+"en": "the street",
+"n": "ll sounds like y"
+},
+{
+"l": 1,
+"k": "word",
+"es": "el trabajo",
+"en": "the work, the job",
+"n": "j is a throaty h"
+},
+{
+"l": 1,
+"k": "word",
+"es": "la escuela",
+"en": "the school",
+"n": "Spanish words never start with sc; they add e"
+},
+{
+"l": 1,
+"k": "word",
+"es": "el coche",
+"en": "the car",
+"n": "In Latin America: el carro"
+},
+{
+"l": 1,
+"k": "word",
+"es": "la comida",
+"en": "the food, the meal",
+"n": "Feminine"
+},
+{
+"l": 1,
+"k": "word",
+"es": "el tiempo",
+"en": "the time; the weather",
+"n": "Context tells you which"
+},
+{
+"l": 1,
+"k": "word",
+"es": "la noche",
+"en": "the night",
+"n": "Buenas noches = good night"
+},
+{
+"l": 1,
+"k": "word",
+"es": "el día",
+"en": "the day",
+"n": "Masculine, despite ending in -a"
+},
+{
+"l": 1,
+"k": "word",
+"es": "hola",
+"en": "hello",
+"n": "The h is silent"
+},
+{
+"l": 1,
+"k": "word",
+"es": "adiós",
+"en": "goodbye",
+"n": "Stress on the last syllable"
+},
+{
+"l": 1,
+"k": "word",
+"es": "gracias",
+"en": "thank you",
+"n": "Muchas gracias = thank you very much"
+},
+{
+"l": 1,
+"k": "word",
+"es": "por favor",
+"en": "please",
+"n": "Literally: as a favour"
+},
+{
+"l": 1,
+"k": "word",
+"es": "sí",
+"en": "yes",
+"n": "With an accent; si without means if"
+},
+{
+"l": 1,
+"k": "word",
+"es": "no",
+"en": "no",
+"n": "Same as English"
+},
+{
+"l": 1,
+"k": "word",
+"es": "buenos días",
+"en": "good morning",
+"n": "Used until about midday"
+},
+{
+"l": 1,
+"k": "word",
+"es": "buenas tardes",
+"en": "good afternoon",
+"n": "From midday until dusk"
+},
+{
+"l": 1,
+"k": "word",
+"es": "mucho gusto",
+"en": "nice to meet you",
+"n": "Literally: much pleasure"
+},
+{
+"l": 1,
+"k": "word",
+"es": "perdón",
+"en": "sorry, excuse me",
+"n": "Also used to get past someone"
+},
+{
+"l": 1,
+"k": "word",
+"es": "rojo",
+"en": "red",
+"n": "Adjectives change: roja for feminine nouns"
+},
+{
+"l": 1,
+"k": "word",
+"es": "azul",
+"en": "blue",
+"n": "Same for masculine and feminine"
+},
+{
+"l": 1,
+"k": "word",
+"es": "grande",
+"en": "big",
+"n": "Same for masculine and feminine"
+},
+{
+"l": 1,
+"k": "word",
+"es": "pequeño",
+"en": "small",
+"n": "ñ sounds like ny"
+},
+{
+"l": 1,
+"k": "word",
+"es": "bueno",
+"en": "good",
+"n": "Becomes buen before a masculine noun"
+},
+{
+"l": 1,
+"k": "word",
+"es": "malo",
+"en": "bad",
+"n": "Becomes mal before a masculine noun"
+},
+{
+"l": 1,
+"k": "word",
+"es": "uno",
+"en": "one",
+"n": "Uno, dos, tres, cuatro, cinco"
+},
+{
+"l": 1,
+"k": "word",
+"es": "diez",
+"en": "ten",
+"n": "z sounds like th (Spain) or s (Latin America)"
+},
+{
+"l": 1,
+"k": "word",
+"es": "hoy",
+"en": "today",
+"n": "Hoy es lunes = today is Monday"
+},
+{
+"l": 1,
+"k": "word",
+"es": "mañana",
+"en": "tomorrow; morning",
+"n": "Context tells you which"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "¿Cómo te llamas?",
+"en": "What is your name?",
+"n": "Note the ¿ at the start"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Me llamo Ana.",
+"en": "My name is Ana.",
+"n": "Literally: I call myself Ana"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "¿Cómo estás?",
+"en": "How are you?",
+"n": "Formal: ¿Cómo está usted?"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Estoy bien, gracias.",
+"en": "I am fine, thank you.",
+"n": "estoy = I am (for states)"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "¿Y tú?",
+"en": "And you?",
+"n": "tú with an accent means you"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Soy de México.",
+"en": "I am from Mexico.",
+"n": "ser for origin and identity"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "No entiendo.",
+"en": "I do not understand.",
+"n": "Say it slowly: no en-TYEN-do"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "¿Puede repetir, por favor?",
+"en": "Can you repeat, please?",
+"n": "Very useful early on"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Habla más despacio, por favor.",
+"en": "Speak more slowly, please.",
+"n": "despacio = slowly"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "¿Hablas inglés?",
+"en": "Do you speak English?",
+"n": "The h is silent"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Hablo un poco de español.",
+"en": "I speak a little Spanish.",
+"n": "un poco de = a little"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "¿Dónde está el baño?",
+"en": "Where is the bathroom?",
+"n": "estar for locations"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "¿Dónde está la estación?",
+"en": "Where is the station?",
+"n": "Station = estación"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Quisiera un café, por favor.",
+"en": "I would like a coffee, please.",
+"n": "quisiera is the polite way to ask"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "La cuenta, por favor.",
+"en": "The bill, please.",
+"n": "Said to the waiter"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "¿Cuánto cuesta?",
+"en": "How much does it cost?",
+"n": "cuesta from costar"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Es muy caro.",
+"en": "It is very expensive.",
+"n": "barato = cheap"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Tengo hambre.",
+"en": "I am hungry.",
+"n": "Spanish says: I have hunger"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Tengo sed.",
+"en": "I am thirsty.",
+"n": "Spanish says: I have thirst"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Tengo frío.",
+"en": "I am cold.",
+"n": "Also: tengo calor = I am hot"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Me gusta la música.",
+"en": "I like music.",
+"n": "Literally: music pleases me"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "No me gusta el pescado.",
+"en": "I do not like fish.",
+"n": "Add no in front of me gusta"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "¿Qué hora es?",
+"en": "What time is it?",
+"n": "Answer: Son las tres = it is three"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Es la una.",
+"en": "It is one o'clock.",
+"n": "One o'clock is singular: es la una"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Nos vemos mañana.",
+"en": "See you tomorrow.",
+"n": "Literally: we see each other tomorrow"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Hasta luego.",
+"en": "See you later.",
+"n": "Literally: until later"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Buen viaje.",
+"en": "Have a good trip.",
+"n": "viaje = trip, journey"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Feliz cumpleaños.",
+"en": "Happy birthday.",
+"n": "cumpleaños = birthday"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "¿Qué tal?",
+"en": "How is it going?",
+"n": "Casual greeting"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Mucho gusto en conocerte.",
+"en": "Nice to meet you.",
+"n": "conocer = to meet, to know a person"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Necesito ayuda.",
+"en": "I need help.",
+"n": "ayuda = help"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "¿Me puede ayudar?",
+"en": "Can you help me?",
+"n": "Polite form"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Está bien.",
+"en": "It is fine.",
+"n": "Also means okay"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "De nada.",
+"en": "You are welcome.",
+"n": "Literally: of nothing"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Lo siento mucho.",
+"en": "I am very sorry.",
+"n": "Stronger than perdón"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Con permiso.",
+"en": "Excuse me.",
+"n": "Used when passing through"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "¿Cuántos años tienes?",
+"en": "How old are you?",
+"n": "Spanish says: how many years do you have"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Tengo veinte años.",
+"en": "I am twenty years old.",
+"n": "Always tener for age"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Vivo en una ciudad pequeña.",
+"en": "I live in a small city.",
+"n": "vivir = to live"
+},
+{
+"l": 2,
+"k": "phrase",
+"es": "Mi casa es tu casa.",
+"en": "My home is your home.",
+"n": "A warm host's saying"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Ayer fuimos al mercado y compramos fruta.",
+"en": "Yesterday we went to the market and bought fruit.",
+"n": "fuimos = ir, past; compramos = comprar, past"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Mañana voy a visitar a mi abuela.",
+"en": "Tomorrow I am going to visit my grandmother.",
+"n": "ir a + infinitive = near future"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Cuando era niño, jugaba en el parque.",
+"en": "When I was a child, I used to play in the park.",
+"n": "jugaba is the imperfect: habitual past"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Si tengo tiempo, te llamaré esta noche.",
+"en": "If I have time, I will call you tonight.",
+"n": "llamaré is the future tense"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Estaba cansado, así que me acosté temprano.",
+"en": "I was tired, so I went to bed early.",
+"n": "así que = so, therefore"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "¿Has estado alguna vez en Madrid?",
+"en": "Have you ever been to Madrid?",
+"n": "has estado = present perfect"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "No sé dónde puse las llaves.",
+"en": "I do not know where I put the keys.",
+"n": "puse = poner, past"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Me gustaría viajar por toda España.",
+"en": "I would like to travel all over Spain.",
+"n": "me gustaría = conditional"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Mientras cocinaba, sonó el teléfono.",
+"en": "While I was cooking, the phone rang.",
+"n": "Imperfect for the background, past for the event"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Hace dos años que vivo aquí.",
+"en": "I have been living here for two years.",
+"n": "hace + time + que = for such a time"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Es importante que estudies todos los días.",
+"en": "It is important that you study every day.",
+"n": "estudies is the subjunctive"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Quiero que vengas conmigo.",
+"en": "I want you to come with me.",
+"n": "querer que + subjunctive"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Me dijeron que la película era buena.",
+"en": "They told me the film was good.",
+"n": "dijeron = decir, past"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Aunque llueva, saldremos a caminar.",
+"en": "Even if it rains, we will go out walking.",
+"n": "aunque + subjunctive = even if"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Después de comer, siempre tomo un café.",
+"en": "After eating, I always have a coffee.",
+"n": "después de + infinitive"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Tenemos que salir antes de las ocho.",
+"en": "We have to leave before eight.",
+"n": "tener que + infinitive = must"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Hay muchas cosas que quiero aprender.",
+"en": "There are many things I want to learn.",
+"n": "hay = there is, there are"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Vamos a la playa los domingos.",
+"en": "We go to the beach on Sundays.",
+"n": "los domingos = on Sundays"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Le di el regalo a mi hermana.",
+"en": "I gave the present to my sister.",
+"n": "le = indirect object (to her)"
+},
+{
+"l": 3,
+"k": "sentence",
+"es": "Lo vi ayer en la estación.",
+"en": "I saw him yesterday at the station.",
+"n": "lo = direct object (him)"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "tener",
+"en": "to have",
+"n": "tengo, tienes, tiene, tenemos, tienen"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "ser",
+"en": "to be (identity, origin)",
+"n": "soy, eres, es, somos, son"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "estar",
+"en": "to be (state, place)",
+"n": "estoy, estás, está, estamos, están"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "ir",
+"en": "to go",
+"n": "voy, vas, va, vamos, van"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "hacer",
+"en": "to do, to make",
+"n": "hago, haces, hace, hacemos, hacen"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "poder",
+"en": "to be able to, can",
+"n": "puedo, puedes, puede, podemos, pueden"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "querer",
+"en": "to want, to love",
+"n": "quiero, quieres, quiere, queremos, quieren"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "decir",
+"en": "to say, to tell",
+"n": "digo, dices, dice, decimos, dicen"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "saber",
+"en": "to know (a fact)",
+"n": "sé, sabes, sabe, sabemos, saben"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "conocer",
+"en": "to know (a person or place)",
+"n": "conozco, conoces, conoce, conocemos, conocen"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "venir",
+"en": "to come",
+"n": "vengo, vienes, viene, venimos, vienen"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "dar",
+"en": "to give",
+"n": "doy, das, da, damos, dan"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "ver",
+"en": "to see",
+"n": "veo, ves, ve, vemos, ven"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "pensar",
+"en": "to think",
+"n": "pienso, piensas, piensa, pensamos, piensan"
+},
+{
+"l": 3,
+"k": "verb",
+"es": "salir",
+"en": "to go out, to leave",
+"n": "salgo, sales, sale, salimos, salen"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "aprovechar",
+"en": "to take advantage of, to make the most of",
+"n": "¡Que aproveche! = enjoy your meal"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "desarrollar",
+"en": "to develop",
+"n": "el desarrollo = development"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "lograr",
+"en": "to achieve, to manage to",
+"n": "lograr + infinitive"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "a pesar de",
+"en": "despite, in spite of",
+"n": "a pesar de que + verb = although"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "sin embargo",
+"en": "however, nevertheless",
+"n": "Formal connector"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "por lo tanto",
+"en": "therefore",
+"n": "Formal connector"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "echar de menos",
+"en": "to miss (someone)",
+"n": "Me haces falta is another way to say it"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "tardar en",
+"en": "to take time to",
+"n": "Tardo una hora en llegar = it takes me an hour to arrive"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "darse cuenta de",
+"en": "to realize",
+"n": "Me di cuenta de que... = I realized that..."
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "enterarse de",
+"en": "to find out about",
+"n": "Me enteré de la noticia = I heard the news"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "el desafío",
+"en": "the challenge",
+"n": "Also: el reto"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "el ambiente",
+"en": "the atmosphere; the environment",
+"n": "medio ambiente = environment"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "la sobremesa",
+"en": "chatting at the table after a meal",
+"n": "No exact English word"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "estrenar",
+"en": "to use or wear for the first time",
+"n": "estrenar zapatos = to wear new shoes for the first time"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "madrugar",
+"en": "to get up early",
+"n": "Related: la madrugada = the early hours"
+},
+{
+"l": 4,
+"k": "tough word",
+"es": "sobrar",
+"en": "to be left over, to be more than enough",
+"n": "Sobra comida = there is food left over"
+},
+{
+"l": 4,
+"k": "false friend",
+"es": "actualmente",
+"en": "currently (not actually)",
+"n": "False friend: actually = en realidad"
+},
+{
+"l": 4,
+"k": "false friend",
+"es": "realizar",
+"en": "to carry out (not to realize)",
+"n": "False friend: to realize = darse cuenta"
+},
+{
+"l": 4,
+"k": "false friend",
+"es": "la librería",
+"en": "the bookshop (not library)",
+"n": "False friend: library = la biblioteca"
+},
+{
+"l": 4,
+"k": "false friend",
+"es": "embarazada",
+"en": "pregnant (not embarrassed)",
+"n": "False friend: embarrassed = avergonzado"
+},
+{
+"l": 4,
+"k": "false friend",
+"es": "el éxito",
+"en": "success (not exit)",
+"n": "False friend: exit = la salida"
+},
+{
+"l": 4,
+"k": "false friend",
+"es": "la carpeta",
+"en": "the folder (not carpet)",
+"n": "False friend: carpet = la alfombra"
+},
+{
+"l": 4,
+"k": "false friend",
+"es": "constipado",
+"en": "having a cold (not constipated)",
+"n": "False friend, common in Spain"
+},
+{
+"l": 4,
+"k": "proverb",
+"es": "Más vale tarde que nunca.",
+"en": "Better late than never.",
+"n": "Traditional proverb"
+},
+{
+"l": 4,
+"k": "proverb",
+"es": "A caballo regalado no se le mira el diente.",
+"en": "Do not look a gift horse in the mouth.",
+"n": "Traditional proverb"
+},
+{
+"l": 4,
+"k": "proverb",
+"es": "Al mal tiempo, buena cara.",
+"en": "Face bad times with a smile.",
+"n": "Traditional proverb"
+},
+{
+"l": 4,
+"k": "proverb",
+"es": "Camarón que se duerme, se lo lleva la corriente.",
+"en": "The shrimp that falls asleep is carried off by the current.",
+"n": "Traditional proverb: stay alert"
+},
+{
+"l": 4,
+"k": "proverb",
+"es": "Dime con quién andas y te diré quién eres.",
+"en": "Tell me who you walk with and I will tell you who you are.",
+"n": "Traditional proverb"
+},
+{
+"l": 4,
+"k": "proverb",
+"es": "En boca cerrada no entran moscas.",
+"en": "Flies do not enter a closed mouth.",
+"n": "Traditional proverb: silence is wise"
+},
+{
+"l": 4,
+"k": "proverb",
+"es": "Más sabe el diablo por viejo que por diablo.",
+"en": "The devil knows more from age than from being the devil.",
+"n": "Traditional proverb: experience counts"
+},
+{
+"l": 4,
+"k": "proverb",
+"es": "No hay mal que por bien no venga.",
+"en": "Every cloud has a silver lining.",
+"n": "Traditional proverb"
+},
+{
+"l": 4,
+"k": "proverb",
+"es": "Quien mucho abarca, poco aprieta.",
+"en": "He who grasps at too much holds little.",
+"n": "Traditional proverb"
+},
+{
+"l": 4,
+"k": "proverb",
+"es": "Del dicho al hecho hay mucho trecho.",
+"en": "Saying and doing are far apart.",
+"n": "Traditional proverb"
+},
+{
+"l": 4,
+"k": "proverb",
+"es": "Poco a poco se va lejos.",
+"en": "Little by little you go far.",
+"n": "Traditional proverb"
+}
+]

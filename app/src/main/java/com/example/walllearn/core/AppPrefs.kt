@@ -71,6 +71,85 @@ object AppPrefs {
         prefs(context).edit().putString(KEY_VOICE, voiceName).apply()
     }
 
+    // --- Language mix -----------------------------------------------------------------
+    // All new keys: an upgraded install reads them as defaults (English only), so the
+    // rotation behaves exactly as before until the user moves a slider.
+
+    /** Relative frequency (0..[MAX_WEIGHT]) of each source in the lock screen rotation. */
+    fun mixWeight(context: Context, source: String): Int =
+        prefs(context).getInt(KEY_MIX_PREFIX + source, if (source == SOURCE_EN) 1 else 0)
+            .coerceIn(0, MAX_WEIGHT)
+
+    fun setMixWeight(context: Context, source: String, weight: Int) {
+        prefs(context).edit().putInt(KEY_MIX_PREFIX + source, weight.coerceIn(0, MAX_WEIGHT)).apply()
+    }
+
+    fun mixCredits(context: Context): IntArray {
+        val raw = prefs(context).getString(KEY_MIX_CREDITS, null) ?: return IntArray(SOURCES.size)
+        val parts = raw.split(",").mapNotNull { it.toIntOrNull() }
+        return if (parts.size == SOURCES.size) parts.toIntArray() else IntArray(SOURCES.size)
+    }
+
+    fun setMixCredits(context: Context, credits: IntArray) {
+        prefs(context).edit().putString(KEY_MIX_CREDITS, credits.joinToString(",")).apply()
+    }
+
+    /** Which source produced the card currently on the lock screen. */
+    fun currentSource(context: Context): String =
+        prefs(context).getString(KEY_CURRENT_SOURCE, SOURCE_EN) ?: SOURCE_EN
+
+    fun setCurrentSource(context: Context, source: String) {
+        prefs(context).edit().putString(KEY_CURRENT_SOURCE, source).apply()
+    }
+
+    /** True (default) when Spanish moves up a level by itself after one pass through the current one. */
+    fun spanishAuto(context: Context): Boolean = prefs(context).getBoolean(KEY_ES_AUTO, true)
+
+    fun setSpanishAuto(context: Context, auto: Boolean) {
+        prefs(context).edit().putBoolean(KEY_ES_AUTO, auto).apply()
+    }
+
+    fun spanishLevel(context: Context): Int = prefs(context).getInt(KEY_ES_LEVEL, 1)
+
+    fun setSpanishLevel(context: Context, level: Int) {
+        prefs(context).edit().putInt(KEY_ES_LEVEL, level).apply()
+    }
+
+    fun spanishOrder(context: Context, level: Int): String? =
+        prefs(context).getString(KEY_ES_ORDER_PREFIX + level, null)
+
+    fun spanishPosition(context: Context, level: Int): Int =
+        prefs(context).getInt(KEY_ES_POS_PREFIX + level, -1)
+
+    fun setSpanishOrder(context: Context, level: Int, order: String?, position: Int) {
+        prefs(context).edit()
+            .putString(KEY_ES_ORDER_PREFIX + level, order)
+            .putInt(KEY_ES_POS_PREFIX + level, position)
+            .apply()
+    }
+
+    /** Index of the imported text whose lines are currently being shown. */
+    fun activeTextId(context: Context): String? = prefs(context).getString(KEY_ACTIVE_TEXT, null)
+
+    fun setActiveTextId(context: Context, id: String?) {
+        prefs(context).edit().putString(KEY_ACTIVE_TEXT, id).apply()
+    }
+
+    const val SOURCE_EN = "en"
+    const val SOURCE_ES = "es"
+    const val SOURCE_TX = "tx"
+    val SOURCES = listOf(SOURCE_EN, SOURCE_ES, SOURCE_TX)
+    const val MAX_WEIGHT = 10
+
+    private const val KEY_MIX_PREFIX = "mix_weight_"
+    private const val KEY_MIX_CREDITS = "mix_credits"
+    private const val KEY_CURRENT_SOURCE = "current_source"
+    private const val KEY_ES_AUTO = "es_auto"
+    private const val KEY_ES_LEVEL = "es_level"
+    private const val KEY_ES_ORDER_PREFIX = "es_order_"
+    private const val KEY_ES_POS_PREFIX = "es_pos_"
+    private const val KEY_ACTIVE_TEXT = "active_text"
+
     /** Index of the sentence the user last reached in an essay (0 if never opened). */
     fun essayProgress(context: Context, essayId: String): Int =
         prefs(context).getInt(KEY_PROGRESS_PREFIX + essayId, 0)
