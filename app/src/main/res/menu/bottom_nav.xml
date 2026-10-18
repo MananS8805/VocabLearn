@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tab_today"
+        android:icon="@drawable/ic_today"
+        android:title="@string/tab_today" />
+    <item
+        android:id="@+id/tab_words"
+        android:icon="@drawable/ic_search"
+        android:title="@string/tab_words" />
+    <item
+        android:id="@+id/tab_languages"
+        android:icon="@drawable/ic_language"
+        android:title="@string/tab_languages" />
+    <item
+        android:id="@+id/tab_essays"
+        android:icon="@drawable/ic_headphones"
+        android:title="@string/tab_essays" />
+    <item
+        android:id="@+id/tab_themes"
+        android:icon="@drawable/ic_palette"
+        android:title="@string/tab_themes" />
+</menu>

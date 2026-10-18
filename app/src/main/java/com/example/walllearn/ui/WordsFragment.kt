@@ -12,13 +12,15 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.walllearn.R
 import com.example.walllearn.core.Dictionary
+import com.example.walllearn.core.WebDictionary
+import com.example.walllearn.core.WebWordStore
 import com.example.walllearn.core.WordRepository
-import com.example.walllearn.databinding.ActivityDictionaryBinding
+import com.example.walllearn.databinding.FragmentWordsBinding
 import com.example.walllearn.databinding.ItemSenseBinding
 import com.google.android.material.snackbar.Snackbar
 import java.util.concurrent.ExecutorService
@@ -29,9 +31,10 @@ import java.util.concurrent.Executors
  * of its meanings and adds it (with its most common meaning) to the lock
  * screen rotation, so words you look up come back around for review.
  */
-class DictionaryActivity : AppCompatActivity() {
+class WordsFragment : Fragment() {
 
-    private lateinit var binding: ActivityDictionaryBinding
+    private var _binding: FragmentWordsBinding? = null
+    private val binding get() = _binding!!
     private val mainHandler = Handler(Looper.getMainLooper())
     private val executor: ExecutorService = Executors.newSingleThreadExecutor()
     private val adapter = ResultsAdapter { openWord(it) }
@@ -39,23 +42,25 @@ class DictionaryActivity : AppCompatActivity() {
     /** Incremented on every keystroke so slow, stale searches are ignored. */
     private var searchGeneration = 0
     private var currentEntry: Dictionary.Entry? = null
+    private var currentFromWeb = false
 
     private val backFromDetail = object : OnBackPressedCallback(false) {
         override fun handleOnBackPressed() = closeDetail()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityDictionaryBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setUpEdgeToEdge(binding.content)
-        onBackPressedDispatcher.addCallback(this, backFromDetail)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentWordsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        binding.resultsList.layoutManager = LinearLayoutManager(this)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backFromDetail)
+
+        binding.resultsList.layoutManager = LinearLayoutManager(requireContext())
         binding.resultsList.adapter = adapter
 
-        binding.backButton.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
         binding.clearButton.setOnClickListener { binding.searchInput.text.clear() }
+        binding.webLookupButton.setOnClickListener { lookUpOnline(binding.searchInput.text.toString().trim()) }
         binding.searchInput.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
@@ -70,17 +75,32 @@ class DictionaryActivity : AppCompatActivity() {
             }
         }
 
-        // Warm up the dictionary (first run copies it out of the APK) while the user types.
-        executor.execute { Dictionary.search(applicationContext, "a", limit = 1) }
+        // Warm up the dictionary (first run copies it out of the APK) in the background.
+        executor.execute { Dictionary.search(appCtx, "a", limit = 1) }
+    }
 
-        binding.searchInput.requestFocus()
-        showKeyboard()
+    /** While this tab is hidden its back-from-detail handler must not swallow Back on other tabs. */
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (hidden) hideKeyboard()
+        backFromDetail.isEnabled = !hidden && _binding?.detailScroll?.visibility == View.VISIBLE
+    }
+
+    override fun onDestroyView() {
+        mainHandler.removeCallbacksAndMessages(null)
+        _binding = null
+        super.onDestroyView()
     }
 
     override fun onDestroy() {
-        super.onDestroy()
-        mainHandler.removeCallbacksAndMessages(null)
         executor.shutdownNow()
+        super.onDestroy()
+    }
+    private val appCtx get() = requireContext().applicationContext
+
+    /** Runs [block] on the main thread unless the view is already gone. */
+    private fun post(block: () -> Unit) {
+        mainHandler.post { if (_binding != null) block() }
     }
 
     private fun onQueryChanged(query: String) {
@@ -95,9 +115,11 @@ class DictionaryActivity : AppCompatActivity() {
         }
         // Small debounce so fast typing doesn't queue a query per keystroke.
         mainHandler.postDelayed({
+            if (_binding == null) return@postDelayed
             executor.execute {
-                val results = Dictionary.search(applicationContext, query)
-                mainHandler.post { if (generation == searchGeneration) showResults(results, query) }
+                val offline = Dictionary.search(appCtx, query)
+                val results = (offline + WebWordStore.search(appCtx, query)).distinct()
+                post { if (generation == searchGeneration) showResults(results, query) }
             }
         }, 120)
     }
@@ -112,15 +134,60 @@ class DictionaryActivity : AppCompatActivity() {
         } else {
             getString(R.string.dictionary_no_results, query.trim())
         }
+        // Offer the web only when the exact word isn't already here.
+        val q = query.trim()
+        val offerWeb = q.isNotEmpty() && WebDictionary.isLookupable(q) &&
+            results.none { it.equals(q, ignoreCase = true) }
+        binding.webLookupButton.visibility = if (offerWeb) View.VISIBLE else View.GONE
+        binding.webLookupButton.isEnabled = true
+        if (offerWeb) binding.webLookupButton.text = getString(R.string.web_lookup_button, q)
+    }
+
+    private fun lookUpOnline(word: String) {
+        if (!WebDictionary.isLookupable(word)) return
+        hideKeyboard()
+        binding.webLookupButton.isEnabled = false
+        binding.resultsList.visibility = View.GONE
+        binding.messageText.visibility = View.VISIBLE
+        binding.messageText.text = getString(R.string.web_lookup_loading, word)
+        executor.execute {
+            val outcome = WebDictionary.lookup(word)
+            var added = false
+            if (outcome is WebDictionary.Result.Found) {
+                WebWordStore.save(appCtx, outcome.entry)
+                added = addToRotation(outcome.entry)
+            }
+            post {
+                when (outcome) {
+                    is WebDictionary.Result.Found -> {
+                        showDetail(outcome.entry, fromWeb = true)
+                        if (added) {
+                            Snackbar.make(binding.root, R.string.dictionary_added, Snackbar.LENGTH_LONG)
+                                .setAction(R.string.btn_undo) { toggleRotation() }
+                                .show()
+                        }
+                    }
+                    WebDictionary.Result.NotFound -> {
+                        binding.webLookupButton.isEnabled = true
+                        binding.messageText.text = getString(R.string.web_lookup_not_found, word)
+                    }
+                    WebDictionary.Result.Unavailable -> {
+                        binding.webLookupButton.isEnabled = true
+                        binding.messageText.text = getString(R.string.web_lookup_unavailable)
+                    }
+                }
+            }
+        }
     }
 
     private fun openWord(word: String) {
         hideKeyboard()
         executor.execute {
-            val entry = Dictionary.lookup(applicationContext, word) ?: return@execute
+            val offline = Dictionary.lookup(appCtx, word)
+            val entry = offline ?: WebWordStore.get(appCtx, word) ?: return@execute
             val added = addToRotation(entry)
-            mainHandler.post {
-                showDetail(entry)
+            post {
+                showDetail(entry, fromWeb = offline == null)
                 if (added) {
                     Snackbar.make(binding.root, R.string.dictionary_added, Snackbar.LENGTH_LONG)
                         .setAction(R.string.btn_undo) { toggleRotation() }
@@ -134,12 +201,15 @@ class DictionaryActivity : AppCompatActivity() {
     private fun addToRotation(entry: Dictionary.Entry): Boolean {
         val primary = entry.senses.first()
         return WordRepository.addWord(
-            applicationContext, entry.word, primary.pos, primary.definition, primary.example
+            appCtx, entry.word, primary.pos, primary.definition, primary.example
         )
     }
 
-    private fun showDetail(entry: Dictionary.Entry) {
+    private fun showDetail(entry: Dictionary.Entry, fromWeb: Boolean = false) {
         currentEntry = entry
+        currentFromWeb = fromWeb
+        binding.creditText.setText(if (fromWeb) R.string.web_credit else R.string.dictionary_credit)
+        binding.webLookupButton.visibility = View.GONE
         binding.detailWord.text = entry.word.replaceFirstChar { it.uppercase() }
         updateRotationButton()
 
@@ -164,7 +234,7 @@ class DictionaryActivity : AppCompatActivity() {
 
     private fun updateRotationButton() {
         val entry = currentEntry ?: return
-        val inRotation = WordRepository.contains(this, entry.word)
+        val inRotation = WordRepository.contains(requireContext(), entry.word)
         binding.rotationButton.setText(
             if (inRotation) R.string.btn_in_rotation else R.string.btn_add_to_rotation
         )
@@ -176,13 +246,13 @@ class DictionaryActivity : AppCompatActivity() {
         val entry = currentEntry ?: return
         executor.execute {
             val message = when {
-                !WordRepository.contains(applicationContext, entry.word) ->
+                !WordRepository.contains(appCtx, entry.word) ->
                     if (addToRotation(entry)) R.string.dictionary_added else null
-                WordRepository.removeWord(applicationContext, entry.word) -> R.string.dictionary_removed
+                WordRepository.removeWord(appCtx, entry.word) -> R.string.dictionary_removed
                 // Bundled GRE words can't be removed.
                 else -> R.string.dictionary_builtin
             }
-            mainHandler.post {
+            post {
                 updateRotationButton()
                 message?.let { Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show() }
             }
@@ -202,13 +272,13 @@ class DictionaryActivity : AppCompatActivity() {
 
     private fun showKeyboard() {
         binding.searchInput.post {
-            getSystemService(InputMethodManager::class.java)
+            requireContext().getSystemService(InputMethodManager::class.java)
                 ?.showSoftInput(binding.searchInput, InputMethodManager.SHOW_IMPLICIT)
         }
     }
 
     private fun hideKeyboard() {
-        getSystemService(InputMethodManager::class.java)
+        requireContext().getSystemService(InputMethodManager::class.java)
             ?.hideSoftInputFromWindow(binding.searchInput.windowToken, 0)
         binding.searchInput.clearFocus()
     }

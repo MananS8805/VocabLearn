@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sentenceText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fontFamily="serif"
+    android:lineSpacingMultiplier="1.3"
+    android:paddingVertical="6dp"
+    android:textColor="@color/reader_text"
+    android:textSize="22sp"
+    tools:text="The claim that formal rules must precede creative freedom rests on an appealing but misleading metaphor." />

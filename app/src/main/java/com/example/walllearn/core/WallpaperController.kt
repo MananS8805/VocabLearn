@@ -25,13 +25,13 @@ object WallpaperController {
      * was revoked).
      */
     fun applyNextWallpaper(context: Context): GreWord? {
-        val word = WordRepository.advance(context)
+        val word = Rotation.advance(context)
         return if (applyWord(context, word)) word else null
     }
 
     /** Re-renders and re-applies whatever word is currently active, without advancing. */
     fun reapplyCurrentWallpaper(context: Context): GreWord? {
-        val word = WordRepository.currentWord(context) ?: WordRepository.advance(context)
+        val word = Rotation.current(context) ?: Rotation.advance(context)
         return if (applyWord(context, word)) word else null
     }
 
