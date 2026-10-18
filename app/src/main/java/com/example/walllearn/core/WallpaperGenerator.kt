@@ -171,12 +171,25 @@ object WallpaperGenerator {
                 textSize = width * 0.038f
                 typeface = typeface(theme.bodyFace, bold = false, italic = true)
             }
-            // Spanish notes are plain teaching hints; only English examples are quoted.
-            val example = if (sentence) word.example else "“${word.example}”"
-            if (sentence) {
-                draw(fit(example, p, width * 0.038f, width * 0.028f, height * 0.09f, width * 0.01f), cursorY)
+            // Spanish hints on phrase cards are plain notes; real examples (English or Spanish) are quoted.
+            val hasTranslation = word.exampleTranslation.isNotBlank()
+            val isNote = sentence && !hasTranslation
+            val example = if (isNote) word.example else "“${word.example}”"
+            val exampleLayout = if (isNote || hasTranslation) {
+                fit(example, p, width * 0.04f, width * 0.028f, height * (if (hasTranslation) 0.07f else 0.09f), width * 0.01f)
             } else {
-                draw(layout(example, p, width * 0.01f), cursorY)
+                layout(example, p, width * 0.01f)
+            }
+            draw(exampleLayout, cursorY)
+            // The example's translation sits right under it: same slot, quieter, not italic.
+            if (hasTranslation) {
+                cursorY += exampleLayout.height + width * 0.014f
+                val t = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
+                    color = theme.example
+                    alpha = 200
+                    typeface = typeface(theme.bodyFace, bold = false)
+                }
+                draw(fit(word.exampleTranslation, t, width * 0.036f, width * 0.026f, height * 0.06f, width * 0.01f), cursorY)
             }
         }
 

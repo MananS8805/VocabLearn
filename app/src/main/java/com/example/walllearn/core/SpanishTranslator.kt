@@ -7,16 +7,17 @@ import com.google.mlkit.nl.translate.TranslatorOptions
 import com.google.mlkit.common.model.DownloadConditions
 
 /**
- * Spanish to English translation with Google's on-device ML Kit model. The model (about
- * 30 MB) is downloaded once; after that every translation runs offline on the phone and
- * the text never leaves the device. Callbacks arrive on the main thread.
+ * Spanish to English (or, with [fromSpanish] false, English to Spanish) translation with
+ * Google's on-device ML Kit models. Each direction's model (about 30 MB) is downloaded
+ * once; after that every translation runs offline on the phone and the text never leaves
+ * the device. Callbacks arrive on the main thread.
  */
-class SpanishTranslator {
+class SpanishTranslator(val fromSpanish: Boolean = true) {
 
     private val client: Translator = Translation.getClient(
         TranslatorOptions.Builder()
-            .setSourceLanguage(TranslateLanguage.SPANISH)
-            .setTargetLanguage(TranslateLanguage.ENGLISH)
+            .setSourceLanguage(if (fromSpanish) TranslateLanguage.SPANISH else TranslateLanguage.ENGLISH)
+            .setTargetLanguage(if (fromSpanish) TranslateLanguage.ENGLISH else TranslateLanguage.SPANISH)
             .build()
     )
 

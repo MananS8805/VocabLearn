@@ -71,10 +71,34 @@
                 android:minLines="8" />
 
             <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/splitModeToggle"
+                android:id="@+id/directionToggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dirSpanish"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/import_dir_es" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dirEnglish"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/import_dir_en" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/splitModeToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 app:selectionRequired="true"
                 app:singleSelection="true">
 

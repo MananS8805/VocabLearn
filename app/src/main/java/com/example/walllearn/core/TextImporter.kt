@@ -15,7 +15,7 @@ object TextImporter {
     const val MAX_CARDS = 300
 
     private val SECTION_HEADER = Regex("^[\\[(].{1,40}[\\])]$")
-    private val CLAUSE_BREAKS = listOf(", ", "; ", ": ", " — ", " - ", " y ", " pero ", " porque ", " que ", " et ", " mais ")
+    private val CLAUSE_BREAKS = listOf(", ", "; ", ": ", " — ", " - ", " y ", " pero ", " porque ", " que ", " et ", " mais ", " and ", " but ", " because ", " which ", " when ")
 
     /** Which mode [split] uses for [raw] when asked for [Mode.AUTO]. */
     fun detectMode(raw: String): Mode {

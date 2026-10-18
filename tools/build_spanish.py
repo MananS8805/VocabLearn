@@ -181,15 +181,111 @@ def kind4(note):
     return "tough word"
 
 
+# Every single word, verb and tough word carries a Spanish example sentence and its translation.
+# Phrases, sentences and proverbs are already sentences, so they have none.
+EXAMPLES = {
+    "la casa": ("Mi casa tiene un jardín pequeño.", "My house has a small garden."),
+    "el agua": ("Quiero un vaso de agua fría.", "I want a glass of cold water."),
+    "el pan": ("Compramos pan fresco cada mañana.", "We buy fresh bread every morning."),
+    "la mesa": ("El libro está sobre la mesa.", "The book is on the table."),
+    "el libro": ("Este libro es muy interesante.", "This book is very interesting."),
+    "la ciudad": ("Madrid es una ciudad grande.", "Madrid is a big city."),
+    "el amigo": ("Mi amigo vive cerca de aquí.", "My friend lives near here."),
+    "la familia": ("Mi familia cena junta los domingos.", "My family has dinner together on Sundays."),
+    "el perro": ("El perro corre por el parque.", "The dog runs through the park."),
+    "el gato": ("El gato duerme en el sofá.", "The cat sleeps on the sofa."),
+    "la leche": ("Me gusta el café con leche.", "I like coffee with milk."),
+    "el café": ("Tomo un café por la mañana.", "I have a coffee in the morning."),
+    "la calle": ("Mi calle es muy tranquila.", "My street is very quiet."),
+    "el trabajo": ("Mi trabajo empieza a las nueve.", "My work starts at nine."),
+    "la escuela": ("Los niños van a la escuela en autobús.", "The children go to school by bus."),
+    "el coche": ("Mi padre compró un coche nuevo.", "My father bought a new car."),
+    "la comida": ("La comida de mi abuela es deliciosa.", "My grandmother's food is delicious."),
+    "el tiempo": ("No tengo tiempo para salir hoy.", "I do not have time to go out today."),
+    "la noche": ("Por la noche leo un poco.", "At night I read a little."),
+    "el día": ("Hoy es un día muy bonito.", "Today is a very beautiful day."),
+    "hola": ("Hola, ¿cómo estás?", "Hello, how are you?"),
+    "adiós": ("Adiós, nos vemos mañana.", "Goodbye, see you tomorrow."),
+    "gracias": ("Gracias por tu ayuda.", "Thank you for your help."),
+    "por favor": ("Un café, por favor.", "A coffee, please."),
+    "sí": ("Sí, quiero ir contigo.", "Yes, I want to go with you."),
+    "no": ("No, gracias, ya comí.", "No, thank you, I already ate."),
+    "buenos días": ("Buenos días, señora López.", "Good morning, Mrs López."),
+    "buenas tardes": ("Buenas tardes, ¿en qué puedo ayudarle?", "Good afternoon, how can I help you?"),
+    "mucho gusto": ("Mucho gusto, me llamo Pablo.", "Nice to meet you, my name is Pablo."),
+    "perdón": ("Perdón, ¿dónde está la estación?", "Excuse me, where is the station?"),
+    "rojo": ("Ella lleva un vestido rojo.", "She is wearing a red dress."),
+    "azul": ("El cielo está muy azul hoy.", "The sky is very blue today."),
+    "grande": ("Vivimos en una casa grande.", "We live in a big house."),
+    "pequeño": ("Tengo un perro pequeño.", "I have a small dog."),
+    "bueno": ("Este pan está muy bueno.", "This bread is very good."),
+    "malo": ("Esta idea no es mala.", "This idea is not bad."),
+    "uno": ("Uno, dos, tres: ¡vamos!", "One, two, three: let's go!"),
+    "diez": ("Son las diez de la noche.", "It is ten at night."),
+    "hoy": ("Hoy voy al mercado.", "Today I am going to the market."),
+    "mañana": ("Mañana tengo una reunión importante.", "Tomorrow I have an important meeting."),
+    "tener": ("Tengo dos hermanos.", "I have two brothers."),
+    "ser": ("Mi madre es profesora.", "My mother is a teacher."),
+    "estar": ("Estamos en casa ahora.", "We are at home now."),
+    "ir": ("Voy al trabajo en tren.", "I go to work by train."),
+    "hacer": ("Hacemos la cena juntos.", "We make dinner together."),
+    "poder": ("¿Puedes abrir la ventana?", "Can you open the window?"),
+    "querer": ("Quiero aprender español.", "I want to learn Spanish."),
+    "decir": ("Ella dice la verdad.", "She tells the truth."),
+    "saber": ("No sé la respuesta.", "I do not know the answer."),
+    "conocer": ("Conozco bien esta ciudad.", "I know this city well."),
+    "venir": ("Mis primos vienen el sábado.", "My cousins are coming on Saturday."),
+    "dar": ("Te doy mi número de teléfono.", "I give you my phone number."),
+    "ver": ("Veo a mis amigos los viernes.", "I see my friends on Fridays."),
+    "pensar": ("Pienso en mis vacaciones.", "I am thinking about my holidays."),
+    "salir": ("Salimos de casa a las ocho.", "We leave home at eight."),
+    "aprovechar": ("Hay que aprovechar el buen tiempo.", "We must make the most of the good weather."),
+    "desarrollar": ("La empresa quiere desarrollar un nuevo producto.", "The company wants to develop a new product."),
+    "lograr": ("Logró terminar el proyecto a tiempo.", "He managed to finish the project on time."),
+    "a pesar de": ("A pesar de la lluvia, salimos a pasear.", "Despite the rain, we went out for a walk."),
+    "sin embargo": ("Estudié mucho; sin embargo, no aprobé.", "I studied a lot; however, I did not pass."),
+    "por lo tanto": ("Es tarde; por lo tanto, nos vamos.", "It is late; therefore, we are leaving."),
+    "echar de menos": ("Echo de menos a mi familia.", "I miss my family."),
+    "tardar en": ("Tardamos una hora en llegar al centro.", "It takes us an hour to get downtown."),
+    "darse cuenta de": ("Me di cuenta de mi error demasiado tarde.", "I realized my mistake too late."),
+    "enterarse de": ("Me enteré de la noticia por la radio.", "I found out about the news on the radio."),
+    "el desafío": ("Aprender un idioma es un gran desafío.", "Learning a language is a great challenge."),
+    "el ambiente": ("En este café hay muy buen ambiente.", "This café has a very nice atmosphere."),
+    "la sobremesa": ("Después de comer, nos quedamos de sobremesa.", "After eating, we stayed chatting at the table."),
+    "estrenar": ("Hoy voy a estrenar mis zapatos nuevos.", "Today I am going to wear my new shoes for the first time."),
+    "madrugar": ("Mañana tengo que madrugar.", "Tomorrow I have to get up early."),
+    "sobrar": ("Sobró mucha comida en la fiesta.", "A lot of food was left over at the party."),
+    "actualmente": ("Actualmente vivo en Sevilla.", "I currently live in Seville."),
+    "realizar": ("Vamos a realizar un estudio pequeño.", "We are going to carry out a small study."),
+    "la librería": ("Compré este libro en la librería del barrio.", "I bought this book at the neighbourhood bookshop."),
+    "embarazada": ("Mi hermana está embarazada de seis meses.", "My sister is six months pregnant."),
+    "el éxito": ("El concierto fue un gran éxito.", "The concert was a great success."),
+    "la carpeta": ("Guardé los documentos en una carpeta.", "I kept the documents in a folder."),
+    "constipado": ("Estoy constipado y tengo tos.", "I have a cold and a cough."),
+}
+
+
+def card(level, kind, es, en, note):
+    c = {"l": level, "k": kind, "es": es, "en": en, "n": note}
+    if es in EXAMPLES:
+        c["ex"], c["ext"] = EXAMPLES[es]
+    return c
+
+
 cards = []
 for es, en, note in L1:
-    cards.append({"l": 1, "k": "word", "es": es, "en": en, "n": note})
+    cards.append(card(1, "word", es, en, note))
 for es, en, note in L2:
-    cards.append({"l": 2, "k": "phrase", "es": es, "en": en, "n": note})
+    cards.append(card(2, "phrase", es, en, note))
 for es, en, note in L3:
-    cards.append({"l": 3, "k": kind3(es), "es": es, "en": en, "n": note})
+    cards.append(card(3, kind3(es), es, en, note))
 for es, en, note in L4:
-    cards.append({"l": 4, "k": kind4(note), "es": es, "en": en, "n": note})
+    cards.append(card(4, kind4(note), es, en, note))
+
+# Single words, verbs and tough words must all have an example; sentences must not need one.
+NEEDS_EXAMPLE = {"word", "verb", "tough word", "false friend"}
+missing = [c["es"] for c in cards if c["k"] in NEEDS_EXAMPLE and "ex" not in c]
+assert not missing, f"cards without an example: {missing}"
 
 out = pathlib.Path(__file__).resolve().parent.parent / "app/src/main/assets/spanish_cards.json"
 out.write_text(json.dumps(cards, ensure_ascii=False, indent=0), encoding="utf-8")

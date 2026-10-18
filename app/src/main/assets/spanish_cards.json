@@ -4,280 +4,360 @@
 "k": "word",
 "es": "la casa",
 "en": "the house",
-"n": "Feminine: la casa"
+"n": "Feminine: la casa",
+"ex": "Mi casa tiene un jardín pequeño.",
+"ext": "My house has a small garden."
 },
 {
 "l": 1,
 "k": "word",
 "es": "el agua",
 "en": "the water",
-"n": "Feminine, but takes el before the stressed a"
+"n": "Feminine, but takes el before the stressed a",
+"ex": "Quiero un vaso de agua fría.",
+"ext": "I want a glass of cold water."
 },
 {
 "l": 1,
 "k": "word",
 "es": "el pan",
 "en": "the bread",
-"n": "Masculine"
+"n": "Masculine",
+"ex": "Compramos pan fresco cada mañana.",
+"ext": "We buy fresh bread every morning."
 },
 {
 "l": 1,
 "k": "word",
 "es": "la mesa",
 "en": "the table",
-"n": "Feminine"
+"n": "Feminine",
+"ex": "El libro está sobre la mesa.",
+"ext": "The book is on the table."
 },
 {
 "l": 1,
 "k": "word",
 "es": "el libro",
 "en": "the book",
-"n": "Masculine"
+"n": "Masculine",
+"ex": "Este libro es muy interesante.",
+"ext": "This book is very interesting."
 },
 {
 "l": 1,
 "k": "word",
 "es": "la ciudad",
 "en": "the city",
-"n": "Nouns ending in -dad are feminine"
+"n": "Nouns ending in -dad are feminine",
+"ex": "Madrid es una ciudad grande.",
+"ext": "Madrid is a big city."
 },
 {
 "l": 1,
 "k": "word",
 "es": "el amigo",
 "en": "the friend (male)",
-"n": "La amiga for a female friend"
+"n": "La amiga for a female friend",
+"ex": "Mi amigo vive cerca de aquí.",
+"ext": "My friend lives near here."
 },
 {
 "l": 1,
 "k": "word",
 "es": "la familia",
 "en": "the family",
-"n": "Feminine"
+"n": "Feminine",
+"ex": "Mi familia cena junta los domingos.",
+"ext": "My family has dinner together on Sundays."
 },
 {
 "l": 1,
 "k": "word",
 "es": "el perro",
 "en": "the dog",
-"n": "Masculine; rr is rolled"
+"n": "Masculine; rr is rolled",
+"ex": "El perro corre por el parque.",
+"ext": "The dog runs through the park."
 },
 {
 "l": 1,
 "k": "word",
 "es": "el gato",
 "en": "the cat",
-"n": "Masculine"
+"n": "Masculine",
+"ex": "El gato duerme en el sofá.",
+"ext": "The cat sleeps on the sofa."
 },
 {
 "l": 1,
 "k": "word",
 "es": "la leche",
 "en": "the milk",
-"n": "Feminine; ch as in chair"
+"n": "Feminine; ch as in chair",
+"ex": "Me gusta el café con leche.",
+"ext": "I like coffee with milk."
 },
 {
 "l": 1,
 "k": "word",
 "es": "el café",
 "en": "the coffee",
-"n": "The accent marks the stress"
+"n": "The accent marks the stress",
+"ex": "Tomo un café por la mañana.",
+"ext": "I have a coffee in the morning."
 },
 {
 "l": 1,
 "k": "word",
 "es": "la calle",
 "en": "the street",
-"n": "ll sounds like y"
+"n": "ll sounds like y",
+"ex": "Mi calle es muy tranquila.",
+"ext": "My street is very quiet."
 },
 {
 "l": 1,
 "k": "word",
 "es": "el trabajo",
 "en": "the work, the job",
-"n": "j is a throaty h"
+"n": "j is a throaty h",
+"ex": "Mi trabajo empieza a las nueve.",
+"ext": "My work starts at nine."
 },
 {
 "l": 1,
 "k": "word",
 "es": "la escuela",
 "en": "the school",
-"n": "Spanish words never start with sc; they add e"
+"n": "Spanish words never start with sc; they add e",
+"ex": "Los niños van a la escuela en autobús.",
+"ext": "The children go to school by bus."
 },
 {
 "l": 1,
 "k": "word",
 "es": "el coche",
 "en": "the car",
-"n": "In Latin America: el carro"
+"n": "In Latin America: el carro",
+"ex": "Mi padre compró un coche nuevo.",
+"ext": "My father bought a new car."
 },
 {
 "l": 1,
 "k": "word",
 "es": "la comida",
 "en": "the food, the meal",
-"n": "Feminine"
+"n": "Feminine",
+"ex": "La comida de mi abuela es deliciosa.",
+"ext": "My grandmother's food is delicious."
 },
 {
 "l": 1,
 "k": "word",
 "es": "el tiempo",
 "en": "the time; the weather",
-"n": "Context tells you which"
+"n": "Context tells you which",
+"ex": "No tengo tiempo para salir hoy.",
+"ext": "I do not have time to go out today."
 },
 {
 "l": 1,
 "k": "word",
 "es": "la noche",
 "en": "the night",
-"n": "Buenas noches = good night"
+"n": "Buenas noches = good night",
+"ex": "Por la noche leo un poco.",
+"ext": "At night I read a little."
 },
 {
 "l": 1,
 "k": "word",
 "es": "el día",
 "en": "the day",
-"n": "Masculine, despite ending in -a"
+"n": "Masculine, despite ending in -a",
+"ex": "Hoy es un día muy bonito.",
+"ext": "Today is a very beautiful day."
 },
 {
 "l": 1,
 "k": "word",
 "es": "hola",
 "en": "hello",
-"n": "The h is silent"
+"n": "The h is silent",
+"ex": "Hola, ¿cómo estás?",
+"ext": "Hello, how are you?"
 },
 {
 "l": 1,
 "k": "word",
 "es": "adiós",
 "en": "goodbye",
-"n": "Stress on the last syllable"
+"n": "Stress on the last syllable",
+"ex": "Adiós, nos vemos mañana.",
+"ext": "Goodbye, see you tomorrow."
 },
 {
 "l": 1,
 "k": "word",
 "es": "gracias",
 "en": "thank you",
-"n": "Muchas gracias = thank you very much"
+"n": "Muchas gracias = thank you very much",
+"ex": "Gracias por tu ayuda.",
+"ext": "Thank you for your help."
 },
 {
 "l": 1,
 "k": "word",
 "es": "por favor",
 "en": "please",
-"n": "Literally: as a favour"
+"n": "Literally: as a favour",
+"ex": "Un café, por favor.",
+"ext": "A coffee, please."
 },
 {
 "l": 1,
 "k": "word",
 "es": "sí",
 "en": "yes",
-"n": "With an accent; si without means if"
+"n": "With an accent; si without means if",
+"ex": "Sí, quiero ir contigo.",
+"ext": "Yes, I want to go with you."
 },
 {
 "l": 1,
 "k": "word",
 "es": "no",
 "en": "no",
-"n": "Same as English"
+"n": "Same as English",
+"ex": "No, gracias, ya comí.",
+"ext": "No, thank you, I already ate."
 },
 {
 "l": 1,
 "k": "word",
 "es": "buenos días",
 "en": "good morning",
-"n": "Used until about midday"
+"n": "Used until about midday",
+"ex": "Buenos días, señora López.",
+"ext": "Good morning, Mrs López."
 },
 {
 "l": 1,
 "k": "word",
 "es": "buenas tardes",
 "en": "good afternoon",
-"n": "From midday until dusk"
+"n": "From midday until dusk",
+"ex": "Buenas tardes, ¿en qué puedo ayudarle?",
+"ext": "Good afternoon, how can I help you?"
 },
 {
 "l": 1,
 "k": "word",
 "es": "mucho gusto",
 "en": "nice to meet you",
-"n": "Literally: much pleasure"
+"n": "Literally: much pleasure",
+"ex": "Mucho gusto, me llamo Pablo.",
+"ext": "Nice to meet you, my name is Pablo."
 },
 {
 "l": 1,
 "k": "word",
 "es": "perdón",
 "en": "sorry, excuse me",
-"n": "Also used to get past someone"
+"n": "Also used to get past someone",
+"ex": "Perdón, ¿dónde está la estación?",
+"ext": "Excuse me, where is the station?"
 },
 {
 "l": 1,
 "k": "word",
 "es": "rojo",
 "en": "red",
-"n": "Adjectives change: roja for feminine nouns"
+"n": "Adjectives change: roja for feminine nouns",
+"ex": "Ella lleva un vestido rojo.",
+"ext": "She is wearing a red dress."
 },
 {
 "l": 1,
 "k": "word",
 "es": "azul",
 "en": "blue",
-"n": "Same for masculine and feminine"
+"n": "Same for masculine and feminine",
+"ex": "El cielo está muy azul hoy.",
+"ext": "The sky is very blue today."
 },
 {
 "l": 1,
 "k": "word",
 "es": "grande",
 "en": "big",
-"n": "Same for masculine and feminine"
+"n": "Same for masculine and feminine",
+"ex": "Vivimos en una casa grande.",
+"ext": "We live in a big house."
 },
 {
 "l": 1,
 "k": "word",
 "es": "pequeño",
 "en": "small",
-"n": "ñ sounds like ny"
+"n": "ñ sounds like ny",
+"ex": "Tengo un perro pequeño.",
+"ext": "I have a small dog."
 },
 {
 "l": 1,
 "k": "word",
 "es": "bueno",
 "en": "good",
-"n": "Becomes buen before a masculine noun"
+"n": "Becomes buen before a masculine noun",
+"ex": "Este pan está muy bueno.",
+"ext": "This bread is very good."
 },
 {
 "l": 1,
 "k": "word",
 "es": "malo",
 "en": "bad",
-"n": "Becomes mal before a masculine noun"
+"n": "Becomes mal before a masculine noun",
+"ex": "Esta idea no es mala.",
+"ext": "This idea is not bad."
 },
 {
 "l": 1,
 "k": "word",
 "es": "uno",
 "en": "one",
-"n": "Uno, dos, tres, cuatro, cinco"
+"n": "Uno, dos, tres, cuatro, cinco",
+"ex": "Uno, dos, tres: ¡vamos!",
+"ext": "One, two, three: let's go!"
 },
 {
 "l": 1,
 "k": "word",
 "es": "diez",
 "en": "ten",
-"n": "z sounds like th (Spain) or s (Latin America)"
+"n": "z sounds like th (Spain) or s (Latin America)",
+"ex": "Son las diez de la noche.",
+"ext": "It is ten at night."
 },
 {
 "l": 1,
 "k": "word",
 "es": "hoy",
 "en": "today",
-"n": "Hoy es lunes = today is Monday"
+"n": "Hoy es lunes = today is Monday",
+"ex": "Hoy voy al mercado.",
+"ext": "Today I am going to the market."
 },
 {
 "l": 1,
 "k": "word",
 "es": "mañana",
 "en": "tomorrow; morning",
-"n": "Context tells you which"
+"n": "Context tells you which",
+"ex": "Mañana tengo una reunión importante.",
+"ext": "Tomorrow I have an important meeting."
 },
 {
 "l": 2,
@@ -704,266 +784,342 @@
 "k": "verb",
 "es": "tener",
 "en": "to have",
-"n": "tengo, tienes, tiene, tenemos, tienen"
+"n": "tengo, tienes, tiene, tenemos, tienen",
+"ex": "Tengo dos hermanos.",
+"ext": "I have two brothers."
 },
 {
 "l": 3,
 "k": "verb",
 "es": "ser",
 "en": "to be (identity, origin)",
-"n": "soy, eres, es, somos, son"
+"n": "soy, eres, es, somos, son",
+"ex": "Mi madre es profesora.",
+"ext": "My mother is a teacher."
 },
 {
 "l": 3,
 "k": "verb",
 "es": "estar",
 "en": "to be (state, place)",
-"n": "estoy, estás, está, estamos, están"
+"n": "estoy, estás, está, estamos, están",
+"ex": "Estamos en casa ahora.",
+"ext": "We are at home now."
 },
 {
 "l": 3,
 "k": "verb",
 "es": "ir",
 "en": "to go",
-"n": "voy, vas, va, vamos, van"
+"n": "voy, vas, va, vamos, van",
+"ex": "Voy al trabajo en tren.",
+"ext": "I go to work by train."
 },
 {
 "l": 3,
 "k": "verb",
 "es": "hacer",
 "en": "to do, to make",
-"n": "hago, haces, hace, hacemos, hacen"
+"n": "hago, haces, hace, hacemos, hacen",
+"ex": "Hacemos la cena juntos.",
+"ext": "We make dinner together."
 },
 {
 "l": 3,
 "k": "verb",
 "es": "poder",
 "en": "to be able to, can",
-"n": "puedo, puedes, puede, podemos, pueden"
+"n": "puedo, puedes, puede, podemos, pueden",
+"ex": "¿Puedes abrir la ventana?",
+"ext": "Can you open the window?"
 },
 {
 "l": 3,
 "k": "verb",
 "es": "querer",
 "en": "to want, to love",
-"n": "quiero, quieres, quiere, queremos, quieren"
+"n": "quiero, quieres, quiere, queremos, quieren",
+"ex": "Quiero aprender español.",
+"ext": "I want to learn Spanish."
 },
 {
 "l": 3,
 "k": "verb",
 "es": "decir",
 "en": "to say, to tell",
-"n": "digo, dices, dice, decimos, dicen"
+"n": "digo, dices, dice, decimos, dicen",
+"ex": "Ella dice la verdad.",
+"ext": "She tells the truth."
 },
 {
 "l": 3,
 "k": "verb",
 "es": "saber",
 "en": "to know (a fact)",
-"n": "sé, sabes, sabe, sabemos, saben"
+"n": "sé, sabes, sabe, sabemos, saben",
+"ex": "No sé la respuesta.",
+"ext": "I do not know the answer."
 },
 {
 "l": 3,
 "k": "verb",
 "es": "conocer",
 "en": "to know (a person or place)",
-"n": "conozco, conoces, conoce, conocemos, conocen"
+"n": "conozco, conoces, conoce, conocemos, conocen",
+"ex": "Conozco bien esta ciudad.",
+"ext": "I know this city well."
 },
 {
 "l": 3,
 "k": "verb",
 "es": "venir",
 "en": "to come",
-"n": "vengo, vienes, viene, venimos, vienen"
+"n": "vengo, vienes, viene, venimos, vienen",
+"ex": "Mis primos vienen el sábado.",
+"ext": "My cousins are coming on Saturday."
 },
 {
 "l": 3,
 "k": "verb",
 "es": "dar",
 "en": "to give",
-"n": "doy, das, da, damos, dan"
+"n": "doy, das, da, damos, dan",
+"ex": "Te doy mi número de teléfono.",
+"ext": "I give you my phone number."
 },
 {
 "l": 3,
 "k": "verb",
 "es": "ver",
 "en": "to see",
-"n": "veo, ves, ve, vemos, ven"
+"n": "veo, ves, ve, vemos, ven",
+"ex": "Veo a mis amigos los viernes.",
+"ext": "I see my friends on Fridays."
 },
 {
 "l": 3,
 "k": "verb",
 "es": "pensar",
 "en": "to think",
-"n": "pienso, piensas, piensa, pensamos, piensan"
+"n": "pienso, piensas, piensa, pensamos, piensan",
+"ex": "Pienso en mis vacaciones.",
+"ext": "I am thinking about my holidays."
 },
 {
 "l": 3,
 "k": "verb",
 "es": "salir",
 "en": "to go out, to leave",
-"n": "salgo, sales, sale, salimos, salen"
+"n": "salgo, sales, sale, salimos, salen",
+"ex": "Salimos de casa a las ocho.",
+"ext": "We leave home at eight."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "aprovechar",
 "en": "to take advantage of, to make the most of",
-"n": "¡Que aproveche! = enjoy your meal"
+"n": "¡Que aproveche! = enjoy your meal",
+"ex": "Hay que aprovechar el buen tiempo.",
+"ext": "We must make the most of the good weather."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "desarrollar",
 "en": "to develop",
-"n": "el desarrollo = development"
+"n": "el desarrollo = development",
+"ex": "La empresa quiere desarrollar un nuevo producto.",
+"ext": "The company wants to develop a new product."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "lograr",
 "en": "to achieve, to manage to",
-"n": "lograr + infinitive"
+"n": "lograr + infinitive",
+"ex": "Logró terminar el proyecto a tiempo.",
+"ext": "He managed to finish the project on time."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "a pesar de",
 "en": "despite, in spite of",
-"n": "a pesar de que + verb = although"
+"n": "a pesar de que + verb = although",
+"ex": "A pesar de la lluvia, salimos a pasear.",
+"ext": "Despite the rain, we went out for a walk."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "sin embargo",
 "en": "however, nevertheless",
-"n": "Formal connector"
+"n": "Formal connector",
+"ex": "Estudié mucho; sin embargo, no aprobé.",
+"ext": "I studied a lot; however, I did not pass."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "por lo tanto",
 "en": "therefore",
-"n": "Formal connector"
+"n": "Formal connector",
+"ex": "Es tarde; por lo tanto, nos vamos.",
+"ext": "It is late; therefore, we are leaving."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "echar de menos",
 "en": "to miss (someone)",
-"n": "Me haces falta is another way to say it"
+"n": "Me haces falta is another way to say it",
+"ex": "Echo de menos a mi familia.",
+"ext": "I miss my family."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "tardar en",
 "en": "to take time to",
-"n": "Tardo una hora en llegar = it takes me an hour to arrive"
+"n": "Tardo una hora en llegar = it takes me an hour to arrive",
+"ex": "Tardamos una hora en llegar al centro.",
+"ext": "It takes us an hour to get downtown."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "darse cuenta de",
 "en": "to realize",
-"n": "Me di cuenta de que... = I realized that..."
+"n": "Me di cuenta de que... = I realized that...",
+"ex": "Me di cuenta de mi error demasiado tarde.",
+"ext": "I realized my mistake too late."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "enterarse de",
 "en": "to find out about",
-"n": "Me enteré de la noticia = I heard the news"
+"n": "Me enteré de la noticia = I heard the news",
+"ex": "Me enteré de la noticia por la radio.",
+"ext": "I found out about the news on the radio."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "el desafío",
 "en": "the challenge",
-"n": "Also: el reto"
+"n": "Also: el reto",
+"ex": "Aprender un idioma es un gran desafío.",
+"ext": "Learning a language is a great challenge."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "el ambiente",
 "en": "the atmosphere; the environment",
-"n": "medio ambiente = environment"
+"n": "medio ambiente = environment",
+"ex": "En este café hay muy buen ambiente.",
+"ext": "This café has a very nice atmosphere."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "la sobremesa",
 "en": "chatting at the table after a meal",
-"n": "No exact English word"
+"n": "No exact English word",
+"ex": "Después de comer, nos quedamos de sobremesa.",
+"ext": "After eating, we stayed chatting at the table."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "estrenar",
 "en": "to use or wear for the first time",
-"n": "estrenar zapatos = to wear new shoes for the first time"
+"n": "estrenar zapatos = to wear new shoes for the first time",
+"ex": "Hoy voy a estrenar mis zapatos nuevos.",
+"ext": "Today I am going to wear my new shoes for the first time."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "madrugar",
 "en": "to get up early",
-"n": "Related: la madrugada = the early hours"
+"n": "Related: la madrugada = the early hours",
+"ex": "Mañana tengo que madrugar.",
+"ext": "Tomorrow I have to get up early."
 },
 {
 "l": 4,
 "k": "tough word",
 "es": "sobrar",
 "en": "to be left over, to be more than enough",
-"n": "Sobra comida = there is food left over"
+"n": "Sobra comida = there is food left over",
+"ex": "Sobró mucha comida en la fiesta.",
+"ext": "A lot of food was left over at the party."
 },
 {
 "l": 4,
 "k": "false friend",
 "es": "actualmente",
 "en": "currently (not actually)",
-"n": "False friend: actually = en realidad"
+"n": "False friend: actually = en realidad",
+"ex": "Actualmente vivo en Sevilla.",
+"ext": "I currently live in Seville."
 },
 {
 "l": 4,
 "k": "false friend",
 "es": "realizar",
 "en": "to carry out (not to realize)",
-"n": "False friend: to realize = darse cuenta"
+"n": "False friend: to realize = darse cuenta",
+"ex": "Vamos a realizar un estudio pequeño.",
+"ext": "We are going to carry out a small study."
 },
 {
 "l": 4,
 "k": "false friend",
 "es": "la librería",
 "en": "the bookshop (not library)",
-"n": "False friend: library = la biblioteca"
+"n": "False friend: library = la biblioteca",
+"ex": "Compré este libro en la librería del barrio.",
+"ext": "I bought this book at the neighbourhood bookshop."
 },
 {
 "l": 4,
 "k": "false friend",
 "es": "embarazada",
 "en": "pregnant (not embarrassed)",
-"n": "False friend: embarrassed = avergonzado"
+"n": "False friend: embarrassed = avergonzado",
+"ex": "Mi hermana está embarazada de seis meses.",
+"ext": "My sister is six months pregnant."
 },
 {
 "l": 4,
 "k": "false friend",
 "es": "el éxito",
 "en": "success (not exit)",
-"n": "False friend: exit = la salida"
+"n": "False friend: exit = la salida",
+"ex": "El concierto fue un gran éxito.",
+"ext": "The concert was a great success."
 },
 {
 "l": 4,
 "k": "false friend",
 "es": "la carpeta",
 "en": "the folder (not carpet)",
-"n": "False friend: carpet = la alfombra"
+"n": "False friend: carpet = la alfombra",
+"ex": "Guardé los documentos en una carpeta.",
+"ext": "I kept the documents in a folder."
 },
 {
 "l": 4,
 "k": "false friend",
 "es": "constipado",
 "en": "having a cold (not constipated)",
-"n": "False friend, common in Spain"
+"n": "False friend, common in Spain",
+"ex": "Estoy constipado y tengo tos.",
+"ext": "I have a cold and a cough."
 },
 {
 "l": 4,

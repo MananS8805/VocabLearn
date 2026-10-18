@@ -172,9 +172,16 @@ class TodayFragment : Fragment() {
             binding.posText.text = word.pos
             binding.posText.visibility = if (word.pos.isBlank()) View.GONE else View.VISIBLE
             binding.meaningText.text = word.meaning
-            // Spanish and imported cards carry a plain teaching note; only English examples are quoted.
-            binding.exampleText.text =
-                if (word.speakLang != null) word.example else getString(R.string.sense_example_format, word.example)
+            // English examples are quoted. Spanish word cards show the example with its translation under it;
+            // Spanish phrase cards show a plain teaching hint instead.
+            binding.exampleText.text = when {
+                word.exampleTranslation.isNotBlank() ->
+                    getString(R.string.sense_example_format, word.example) + "\n" + word.exampleTranslation
+                word.speakLang != null -> word.example
+                else -> getString(R.string.sense_example_format, word.example)
+            }
+            binding.noteText.text = word.note
+            binding.noteText.visibility = if (word.note.isBlank()) View.GONE else View.VISIBLE
             binding.exampleText.visibility = if (word.example.isBlank()) View.GONE else View.VISIBLE
             val (position, total) = WordRepository.progress(ctx)
             binding.progressText.text = word.footer ?: getString(R.string.progress_format, position, total)

@@ -19,5 +19,9 @@ data class GreWord(
     /** Replaces the "Word n of N" footer when set (e.g. "Level 2 · 35/200"). */
     val footer: String? = null,
     /** BCP-47 tag to read [word] aloud in (e.g. "es-ES"), or null when there is nothing to speak. */
-    val speakLang: String? = null
+    val speakLang: String? = null,
+    /** English translation of [example] when [example] is a Spanish sentence; blank otherwise. */
+    val exampleTranslation: String = "",
+    /** A short teaching hint (gender, conjugation) shown in the app but not on the lock screen. */
+    val note: String = ""
 )

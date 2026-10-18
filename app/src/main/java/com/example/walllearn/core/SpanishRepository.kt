@@ -19,7 +19,16 @@ object SpanishRepository {
     private const val TAG = "SpanishRepository"
     private const val ASSET_PATH = "spanish_cards.json"
 
-    data class Card(val level: Int, val kind: String, val es: String, val en: String, val note: String)
+    data class Card(
+        val level: Int,
+        val kind: String,
+        val es: String,
+        val en: String,
+        val note: String,
+        /** Spanish example sentence and its English translation; blank for cards that are already sentences. */
+        val example: String = "",
+        val exampleTranslation: String = ""
+    )
 
     val LEVEL_NAMES = listOf("Beginner", "Elementary", "Intermediate", "Advanced")
     val LEVEL_COUNT = LEVEL_NAMES.size
@@ -46,7 +55,12 @@ object SpanishRepository {
         val all = ArrayList<Card>(array.length())
         for (i in 0 until array.length()) {
             val o = array.getJSONObject(i)
-            all.add(Card(o.getInt("l"), o.getString("k"), o.getString("es"), o.getString("en"), o.optString("n", "")))
+            all.add(
+                Card(
+                    o.getInt("l"), o.getString("k"), o.getString("es"), o.getString("en"), o.optString("n", ""),
+                    o.optString("ex", ""), o.optString("ext", "")
+                )
+            )
         }
         return all.groupBy { it.level }
     }
@@ -131,8 +145,11 @@ object SpanishRepository {
             word = card.es,
             pos = "español · ${card.kind}",
             meaning = card.en,
-            example = card.note,
-            sentence = card.kind != "word",
+            // Words show an example sentence with its translation; phrases and sentences show their hint.
+            example = card.example.ifBlank { card.note },
+            exampleTranslation = card.exampleTranslation,
+            note = if (card.example.isNotBlank()) card.note else "",
+            sentence = card.kind != "word" && card.kind != "verb" && card.kind != "tough word" && card.kind != "false friend",
             footer = "Level $level · ${LEVEL_NAMES[level - 1]} · $seen/$total",
             speakLang = "es-ES"
         )

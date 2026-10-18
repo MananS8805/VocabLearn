@@ -94,6 +94,27 @@ class LanguageMixTest {
     }
 
     @Test
+    fun everySpanishWordVerbAndToughWordHasAnExampleWithTranslation() {
+        val json = File("src/main/assets/spanish_cards.json").readText(Charsets.UTF_8)
+        val needExample = setOf("word", "verb", "tough word", "false friend")
+        val cards = SpanishRepository.parse(json).values.flatten().filter { it.kind in needExample }
+        assertTrue(cards.size > 60)
+        for (c in cards) {
+            assertTrue("no example for ${c.es}", c.example.isNotBlank())
+            assertTrue("no translation for ${c.es}", c.exampleTranslation.isNotBlank())
+        }
+    }
+
+    @Test
+    fun englishTextSplitsLikeAnyOther() {
+        val cards = TextImporter.split("I walk down the street. The sun is warm today! Do you want to come with me?")
+        assertEquals(
+            listOf("I walk down the street.", "The sun is warm today!", "Do you want to come with me?"),
+            cards
+        )
+    }
+
+    @Test
     fun spanishCourseAssetParsesAndCoversEveryLevel() {
         val json = File("src/main/assets/spanish_cards.json").readText(Charsets.UTF_8)
         val byLevel = SpanishRepository.parse(json)

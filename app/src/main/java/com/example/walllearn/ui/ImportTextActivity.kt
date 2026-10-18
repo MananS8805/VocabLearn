@@ -33,6 +33,9 @@ class ImportTextActivity : AppCompatActivity() {
     private var translating = false
     private var destroyed = false
 
+    /** True when the pasted text is English and gets a Spanish translation. Fixed when the text is split. */
+    private var englishInput = false
+
     private val backHandler = object : OnBackPressedCallback(false) {
         override fun handleOnBackPressed() = showInputStep()
     }
@@ -44,6 +47,10 @@ class ImportTextActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpEdgeToEdge(binding.content, light)
         onBackPressedDispatcher.addCallback(this, backHandler)
+
+        // Show the defaults as selected from the start.
+        binding.directionToggle.check(R.id.dirSpanish)
+        binding.splitModeToggle.check(R.id.modeAutoSplit)
 
         binding.rowList.layoutManager = LinearLayoutManager(this)
         binding.rowList.adapter = adapter
@@ -85,8 +92,10 @@ class ImportTextActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.import_empty, Toast.LENGTH_SHORT).show()
             return
         }
+        englishInput = binding.directionToggle.checkedButtonId == R.id.dirEnglish
         rows.clear()
-        rows.addAll(pieces.map { Row(it, "") })
+        // Spanish always ends up first on the card; English input starts in the English box.
+        rows.addAll(pieces.map { if (englishInput) Row("", it) else Row(it, "") })
         adapter.notifyDataSetChanged()
         showReviewStep()
     }
@@ -114,9 +123,18 @@ class ImportTextActivity : AppCompatActivity() {
 
     private fun translateAll() {
         if (translating) return
-        val pending = rows.indices.filter { rows[it].en.isBlank() && rows[it].es.isNotBlank() }
+        val toSpanish = englishInput
+        val pending = rows.indices.filter {
+            if (toSpanish) rows[it].es.isBlank() && rows[it].en.isNotBlank()
+            else rows[it].en.isBlank() && rows[it].es.isNotBlank()
+        }
         if (pending.isEmpty()) return
-        val engine = translator ?: SpanishTranslator().also { translator = it }
+        // One translator per direction; switch if the direction changed since it was made.
+        if (translator?.fromSpanish == toSpanish) {
+            translator?.close()
+            translator = null
+        }
+        val engine = translator ?: SpanishTranslator(fromSpanish = !toSpanish).also { translator = it }
         setTranslating(true, getString(R.string.import_downloading))
         engine.prepare { ready ->
             if (destroyed) return@prepare
@@ -127,13 +145,13 @@ class ImportTextActivity : AppCompatActivity() {
             }
             var failed = 0
             engine.translateAll(
-                texts = pending.map { rows[it].es },
+                texts = pending.map { if (toSpanish) rows[it].en else rows[it].es },
                 isCancelled = { destroyed },
                 onEach = { i, result ->
                     if (destroyed) return@translateAll
                     val row = rows.getOrNull(pending[i])
                     if (row != null && result != null) {
-                        row.en = result
+                        if (toSpanish) row.es = result else row.en = result
                         adapter.notifyItemChanged(pending[i], PAYLOAD_TRANSLATION)
                     } else {
                         failed++
@@ -159,6 +177,11 @@ class ImportTextActivity : AppCompatActivity() {
     }
 
     private fun save() {
+        // Spanish leads every card, so English input must be translated (or typed) first.
+        if (rows.any { it.es.isBlank() && it.en.isNotBlank() }) {
+            Toast.makeText(this, R.string.import_needs_translation, Toast.LENGTH_LONG).show()
+            return
+        }
         val lines = rows
             .filter { it.es.isNotBlank() }
             .map { UserTextRepository.Line(it.es.trim(), it.en.trim()) }
@@ -231,6 +254,7 @@ class ImportTextActivity : AppCompatActivity() {
 
             fun bindTranslation(row: Row) {
                 if (b.enInput.text?.toString() != row.en) b.enInput.setText(row.en)
+                if (b.esInput.text?.toString() != row.es) b.esInput.setText(row.es)
             }
 
             private fun watcher(onChange: (String) -> Unit) = object : TextWatcher {
